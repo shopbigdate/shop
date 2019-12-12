@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qrsx.springboot.mapper.UserInfoMapper">
+	<resultMap type="UserInfo" id="userMap">
+		<id property="userId" column="user_id" />
+		<result property="userName" column="user_name" />
+		<result property="userPhone" column="user_phone" />
+		<result property="userAddress" column="user_address" />
+		<result property="loginStatus" column="login_status" />
+		<result property="activeStatus" column="active_status" />
+	</resultMap>
+
+	<select id="checkPassword" parameterType="UserInfo" resultMap="userMap">
+		select
+		user_id,user_name,user_phone,user_address,login_status,active_status
+		from user_info where user_name = #{userName} and
+		user_password = #{userPassword}
+	</select>
+	
+	<update id="updateStatus" parameterType="Integer">
+		update user_info set login_status = 1, active_status = 1 where user_id = #{userId}
+	</update>
+</mapper>
