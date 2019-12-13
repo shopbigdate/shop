@@ -20,7 +20,12 @@ export default new Router({
       path:'/shopping/register',
       name:'register',
       component: userRegister
-    }
+    },
+	{
+		path: '/login',
+		name: 'Login',
+		component: Login
+	},
   ],
   mode:'history'
 })
