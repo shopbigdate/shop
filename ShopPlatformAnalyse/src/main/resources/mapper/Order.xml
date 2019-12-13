@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+    <mapper namespace="com.qrsx.springboot.mapper.OrderMapper">         
+		<insert id="addOrderInfo">
+		    insert into order_info values (#{order_id},#{user_id},#{consignee_name},#{order_sum},#{order_status},#{create_time},#{update_time}) 
+		</insert>
+		<insert id="addOrderDetail" parameterType = "java.util.List">
+		    insert into order_detail(order_id,goods_id,goods_number,goods_sum) values 
+		    <foreach collection="list" item="orderDetail" index="index" separator=",">
+		        (#{orderDetail.order_id},#{orderDetail.goods_id},#{orderDetail.goods_number},#{orderDetail.goods_sum}) 
+		    </foreach>
+		    
+		</insert>
+		<update id="updateOrderInfo">
+		    update order_info set order_status = #{order_status},update_time = #{update_time} where order_id = #{order_id}
+		</update>
+    </mapper>
