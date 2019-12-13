@@ -15,6 +15,11 @@ export default new Router({
       path: '/Order',
 	  name: 'Order',
       component: ORDER
+    },
+	{
+      path:'/shopping/register',
+      name:'register',
+      component: userRegister
     }
   ],
   mode:'history'
