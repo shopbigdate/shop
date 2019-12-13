@@ -1,18 +1,13 @@
 package com.qrsx.springboot.mapper;
 
-
-
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.qrsx.springboot.pojo.GoodsInfo;
 import com.qrsx.springboot.pojo.GoodsPicture;
-import com.qrsx.springboot.pojo.ShoppingCar;
-
 
 /**
  * 
@@ -24,10 +19,12 @@ import com.qrsx.springboot.pojo.ShoppingCar;
  */
 @Mapper
 public interface GoodsInfoMapper {
-	 GoodsInfo getOneGoodsInfo(@Param("goods_id")Integer goods_id);
-	 List<GoodsPicture> getOneGoodsPicture(@Param("goods_id")Integer goods_id);
-	 HashMap createShoppingCar(HashMap<String,Integer> map);
-	 //主页搜索vague
-    List<GoodsInfo> vague(String goods_name);
-}
+	GoodsInfo getOneGoodsInfo(@Param("goods_id") Integer goods_id);
 
+	List<GoodsPicture> getOneGoodsPicture(@Param("goods_id") Integer goods_id);
+
+	HashMap createShoppingCar(HashMap<String, Integer> map);
+
+	//主页搜索vague
+	List<GoodsInfo> vague(String goods_name);
+}

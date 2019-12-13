@@ -29,4 +29,14 @@ public class UserInfoServiceImpl implements UserInfoService {
 		}
 		return userInfo1;
 	}
+
+	@Override
+	public Integer insertUser(UserInfo userInfo) {
+		return userInfoMapper.insertUser(userInfo);
+	}
+
+	@Override
+	public String selectUser(String userName) {
+		return userInfoMapper.selectUser(userName);
+	}
 }

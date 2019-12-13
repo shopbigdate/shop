@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qrsx.springboot.pojo.UserInfo;
@@ -22,6 +23,7 @@ import com.qrsx.springboot.util.Md5Util;
  *
  */
 @RestController
+@RequestMapping("user")
 public class UserInfoController {
 
 	@Autowired
@@ -33,7 +35,7 @@ public class UserInfoController {
 		//使用MD5对密码加密
 		String pass = null;
 		try {
-			pass = Md5Util.EncoderByMd5(userInfo.getUserPassword());
+			pass = Md5Util.encoderByMd5(userInfo.getUserPassword());
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		} catch (UnsupportedEncodingException e) {
@@ -47,5 +49,39 @@ public class UserInfoController {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	    * @Description 注册方法，添加数据到数据库
+	    * @Author  Yuyang Lu
+	    * @Date   2019/12/12 0012 下午 7:26
+	    * @Param
+	    * @Return int 添加成功后返回1,，否则返回0
+	    * @Exception  try catch捕捉加密异常
+	    */
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public Integer register(@RequestBody UserInfo userInfo) {
+		try {
+			userInfo.setUserPassword(Md5Util.encoderByMd5(userInfo.getUserPassword()));
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return userInfoService.insertUser(userInfo);
+	}
+
+	/**
+	* @Description 查找用户名，查看用户名在数据库中是否存在
+	* @Author  Yuyang Lu
+	* @Date   2019/12/12 0012 下午 7:28
+	* @Param
+	* @Return  boolean：true && false
+	* @Exception
+	*/
+	@RequestMapping(value = "/select", method = RequestMethod.POST)
+	public boolean selectUserName(@RequestBody UserInfo userInfo) {
+		String result = userInfoService.selectUser(userInfo.getUserName());
+		return result == null ? true : false;
 	}
 }

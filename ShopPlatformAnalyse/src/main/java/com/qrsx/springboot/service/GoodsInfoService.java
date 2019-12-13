@@ -6,7 +6,6 @@ import com.qrsx.springboot.pojo.GoodsInfo;
 import com.qrsx.springboot.pojo.GoodsPicture;
 import com.qrsx.springboot.pojo.ShoppingCar;
 
-
 /**
  * 
  * @ClassName:  GoodsInfoService   
@@ -16,11 +15,14 @@ import com.qrsx.springboot.pojo.ShoppingCar;
  *     
  */
 public interface GoodsInfoService {
-	
-	 GoodsInfo getOneGoodsInfo(Integer goods_id);
-	 List<GoodsPicture> getOneGoodsPicture(Integer goods_id);
-	 Integer createShoppingCar(ShoppingCar shoppingcar);
+
+	GoodsInfo getOneGoodsInfo(Integer goods_id);
+
+	List<GoodsPicture> getOneGoodsPicture(Integer goods_id);
+
+	Integer createShoppingCar(ShoppingCar shoppingcar);
+
 	//主页搜索vague
-    public List<GoodsInfo> vague(String goods_name);
+	public List<GoodsInfo> vague(String goods_name);
 
 }
