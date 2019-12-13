@@ -20,6 +20,7 @@ public interface GoodsInfoService {
 	 GoodsInfo getOneGoodsInfo(Integer goods_id);
 	 List<GoodsPicture> getOneGoodsPicture(Integer goods_id);
 	 Integer createShoppingCar(ShoppingCar shoppingcar);
-	
+	//主页搜索vague
+    public List<GoodsInfo> vague(String goods_name);
 
 }

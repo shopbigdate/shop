@@ -27,4 +27,7 @@ public interface GoodsInfoMapper {
 	 GoodsInfo getOneGoodsInfo(@Param("goods_id")Integer goods_id);
 	 List<GoodsPicture> getOneGoodsPicture(@Param("goods_id")Integer goods_id);
 	 HashMap createShoppingCar(HashMap<String,Integer> map);
+	 //主页搜索vague
+    List<GoodsInfo> vague(String goods_name);
 }
+
