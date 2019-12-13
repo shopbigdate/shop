@@ -6,6 +6,11 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
+  	{
+      path: '/',
+      name: 'goods_info_index',
+      component: goods_info_index
+    },
     {
       path: '/Order',
 	  name: 'Order',
