@@ -6,7 +6,7 @@
 * @author cjl 
 * @date 2019年12月11日  
 * @version 1.0  
-*/  
+*/
 package com.qrsx.springboot.mapper;
 
 import java.util.List;
@@ -14,7 +14,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.qrsx.springboot.pojo.OrderDetail;
-import com.qrsx.springboot.pojo.ShoppingCar;
 import com.qrsx.springboot.pojo.UserInfo;
 
 /**  
@@ -27,8 +26,10 @@ import com.qrsx.springboot.pojo.UserInfo;
 public interface OrderGeneralDetailsMapper {
 	//
 	public List<OrderDetail> search();
+
 	//用户购物车商品
 	public List<OrderDetail> detial(Double gn);
+
 	//用户id获取用户信息
 	public List<UserInfo> user_iddetial(Integer user_id);
 }

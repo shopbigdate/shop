@@ -6,7 +6,7 @@
 * @author llx  
 * @date 2019年12月10日  
 * @version 1.0  
-*/  
+*/
 package com.qrsx.springboot.pojo;
 
 import java.util.List;
@@ -33,46 +33,59 @@ public class OrderList {
 	private String user_phone;
 	//收货地址
 	private String user_address;
-	
+
 	public Double getOrder_sum() {
 		return order_sum;
 	}
+
 	public void setOrder_sum(Double order_sum) {
 		this.order_sum = order_sum;
 	}
+
 	public List<OrderDetail> getOrderDetail() {
 		return orderDetail;
 	}
+
 	public void setOrderDetail(List<OrderDetail> orderDetail) {
 		this.orderDetail = orderDetail;
 	}
+
 	public Integer getUser_id() {
 		return user_id;
 	}
+
 	public void setUser_id(Integer user_id) {
 		this.user_id = user_id;
 	}
+
 	public String getConsignee_name() {
 		return consignee_name;
 	}
+
 	public void setConsignee_name(String consignee_name) {
 		this.consignee_name = consignee_name;
 	}
+
 	public String getOrder_status() {
 		return order_status;
 	}
+
 	public void setOrder_status(String order_status) {
 		this.order_status = order_status;
 	}
+
 	public String getUser_phone() {
 		return user_phone;
 	}
+
 	public void setUser_phone(String user_phone) {
 		this.user_phone = user_phone;
 	}
+
 	public String getUser_address() {
 		return user_address;
 	}
+
 	public void setUser_address(String user_address) {
 		this.user_address = user_address;
 	}
@@ -88,10 +101,9 @@ public class OrderList {
 		this.user_phone = user_phone;
 		this.user_address = user_address;
 	}
+
 	public OrderList() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	
-	
+
 }

@@ -2,6 +2,7 @@ package com.qrsx.springboot.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.qrsx.springboot.mapper.UserInfoMapper;
 import com.qrsx.springboot.pojo.UserInfo;
@@ -22,6 +23,8 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 	//登录，验证用户名和密码，并修改状态
 	@Override
+	//加上注解@Transactional,就可以指定这个类需要受Spring的事务管理
+	@Transactional
 	public UserInfo userLogin(UserInfo userInfo) {
 		UserInfo userInfo1 = userInfoMapper.checkPassword(userInfo);
 		if (userInfo1 != null) {

@@ -6,7 +6,7 @@
 * @author llx  
 * @date 2019年12月11日  
 * @version 1.0  
-*/  
+*/
 package com.qrsx.springboot.util;
 
 import java.text.SimpleDateFormat;
@@ -19,7 +19,7 @@ import java.util.Date;
 * @date 2019年12月11日  
 */
 public class GetOrderId {
-	public String getId(SimpleDateFormat sdf,Date d,Integer user_id) {
-		return sdf.format(d)+"-"+user_id;
+	public String getId(SimpleDateFormat sdf, Date d, Integer user_id) {
+		return sdf.format(d) + "-" + user_id;
 	}
 }

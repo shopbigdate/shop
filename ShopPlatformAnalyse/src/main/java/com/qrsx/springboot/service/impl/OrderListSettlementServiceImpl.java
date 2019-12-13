@@ -6,7 +6,7 @@
 * @author cjl 
 * @date 2019年12月11日  
 * @version 1.0  
-*/  
+*/
 package com.qrsx.springboot.service.impl;
 
 import java.util.List;
@@ -26,9 +26,11 @@ import com.qrsx.springboot.service.OrderListSettlementService;
 * @date 2019年12月11日  
 */
 @Service
-public class OrderListSettlementServiceImpl implements OrderListSettlementService{
+public class OrderListSettlementServiceImpl implements OrderListSettlementService {
 
-	@Autowired OrderGeneralDetailsMapper orderGeneralDetailsMapper;
+	@Autowired
+	OrderGeneralDetailsMapper orderGeneralDetailsMapper;
+
 	/* (non-Javadoc)  
 	 * <p>Title: search</p>  
 	 * <p>Description: 总的商品展示</p>  
@@ -37,21 +39,9 @@ public class OrderListSettlementServiceImpl implements OrderListSettlementServic
 	 */
 	@Override
 	public List<OrderDetail> search() {
-		// TODO Auto-generated method stub
 		return orderGeneralDetailsMapper.search();
 	}
-	/* (non-Javadoc)  
-	 * <p>Title: detial</p>  
-	 * <p>Description: </p>  
-	 * @param gn
-	 * @return  
-	 * @see com.qrsx.springboot.service.OrderListSettlementService#detial(java.lang.Double)  
-	 */
-	@Override
-	public List<OrderDetail> detial(Double gn) {
-		// TODO Auto-generated method stub
-		return orderGeneralDetailsMapper.detial(gn);
-	}
+
 	/* (non-Javadoc)  
 	 * <p>Title: user_iddetial</p>  
 	 * <p>Description: 用户id获取用户信息</p>  
@@ -61,8 +51,7 @@ public class OrderListSettlementServiceImpl implements OrderListSettlementServic
 	 */
 	@Override
 	public List<UserInfo> user_iddetial(Integer user_id) {
-		// TODO Auto-generated method stub
-		return orderGeneralDetailsMapper.user_iddetial( user_id);
+		return orderGeneralDetailsMapper.user_iddetial(user_id);
 	}
-	
+
 }

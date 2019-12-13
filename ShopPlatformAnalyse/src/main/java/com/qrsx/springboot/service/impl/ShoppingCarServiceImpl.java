@@ -6,7 +6,7 @@
 * @author cjl 
 * @date 2019年12月10日  
 * @version 1.0  
-*/  
+*/
 package com.qrsx.springboot.service.impl;
 
 import java.util.List;
@@ -25,8 +25,9 @@ import com.qrsx.springboot.service.ShoppingCarService;
 * @date 2019年12月10日  
 */
 @Service
-public class ShoppingCarServiceImpl implements ShoppingCarService{
-	@Autowired ShoppingCarMapper shoppingCarMapper;
+public class ShoppingCarServiceImpl implements ShoppingCarService {
+	@Autowired
+	ShoppingCarMapper shoppingCarMapper;
 
 	/* (non-Javadoc)  
 	 * <p>Title: Search</p>  
@@ -36,7 +37,6 @@ public class ShoppingCarServiceImpl implements ShoppingCarService{
 	 */
 	@Override
 	public List<ShoppingCar> search() {
-		// TODO Auto-generated method stub
 		return shoppingCarMapper.search();
 	}
 
@@ -49,7 +49,6 @@ public class ShoppingCarServiceImpl implements ShoppingCarService{
 	 */
 	@Override
 	public List<ShoppingCar> getAllShoppingCarInfo(Integer user_id) {
-		// TODO Auto-generated method stub
 		return shoppingCarMapper.getAllShoppingCarInfo(user_id);
 	}
 
@@ -61,8 +60,7 @@ public class ShoppingCarServiceImpl implements ShoppingCarService{
 	 */
 	@Override
 	public void deletegoods_id(Integer goods_id) {
-		// TODO Auto-generated method stub
 		shoppingCarMapper.deletegoods_id(goods_id);
 	}
-	
+
 }

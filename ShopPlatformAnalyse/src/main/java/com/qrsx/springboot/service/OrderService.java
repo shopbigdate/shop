@@ -6,7 +6,7 @@
 * @author llx  
 * @date 2019年12月9日  
 * @version 1.0  
-*/  
+*/
 package com.qrsx.springboot.service;
 
 import java.util.List;
@@ -22,6 +22,8 @@ import com.qrsx.springboot.pojo.OrderInfo;
 */
 public interface OrderService {
 	void addOrderInfo(OrderInfo orderInfo);
+
 	void addOrderDetail(List<OrderDetail> orderDetail);
+
 	void updateOrderInfo(OrderInfo orderInfo);
 }

@@ -6,26 +6,20 @@
 * @author llx  
 * @date 2019年12月9日  
 * @version 1.0  
-*/  
+*/
 package com.qrsx.springboot.controller;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.Order;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qrsx.springboot.pojo.OrderDetail;
@@ -46,31 +40,31 @@ public class OrderController {
 	//自动连接到Service Bean
 	@Autowired
 	OrderService orderService;
-	
+
 	@Autowired
 	GoodsInfoService goodsInfoService;
-	
+
 	@Autowired
 	HttpServletRequest request;
-	
+
 	/**
 	 * <p>Title: getOrderList</p>  
 	 * <p>Description: 接收购物车存到session中的orderList数据</p>  
 	 * @return
 	 */
-	@RequestMapping(value ="/getOrders", method = RequestMethod.POST)
+	@RequestMapping(value = "/getOrders", method = RequestMethod.POST)
 	public OrderList getOrderList() {
 		HttpSession session = request.getSession();
 		return (OrderList) session.getAttribute("orderList");
 	}
-	
+
 	/**
 	 * <p>Title: orderAdd</p>  
 	 * <p>Description: 接收下单后的orderlist数据</p>  
 	 * @param orderList
 	 */
-	@RequestMapping(value ="/orders", method = RequestMethod.POST)
-    public void orderAdd(@RequestBody OrderList orderList){
+	@RequestMapping(value = "/orders", method = RequestMethod.POST)
+	public void orderAdd(@RequestBody OrderList orderList) {
 		//orderInfo
 		OrderInfo orderInfo = null;
 		//生成当前时间
@@ -79,45 +73,42 @@ public class OrderController {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmss");
 		//订单创建时间和修改时间所需要的时间格式
 		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String orderId = new GetOrderId().getId(sdf,d,orderList.getUser_id());
+		String orderId = new GetOrderId().getId(sdf, d, orderList.getUser_id());
 		HttpSession session = request.getSession();
 		session.setAttribute("orderId", orderId);
-		orderInfo=new OrderInfo(orderId,orderList.getUser_id(),
-				orderList.getConsignee_name(),orderList.getOrder_sum(),
-				orderList.getOrder_status(),Timestamp.valueOf(sdf2.format(d)),Timestamp.valueOf(sdf2.format(d)));
+		orderInfo = new OrderInfo(orderId, orderList.getUser_id(), orderList.getConsignee_name(),
+				orderList.getOrder_sum(), orderList.getOrder_status(), Timestamp.valueOf(sdf2.format(d)),
+				Timestamp.valueOf(sdf2.format(d)));
 		orderService.addOrderInfo(orderInfo);
-		
+
 		//orderDetail
 		int i = 0;
-		for(OrderDetail o : orderList.getOrderDetail()) {
+		for (OrderDetail o : orderList.getOrderDetail()) {
 			o.setOrder_id(orderInfo.getOrder_id());
 			o.setGoods_id(orderList.getOrderDetail().get(i).getGoods_id());
 			o.setGoods_number(orderList.getOrderDetail().get(i).getGoods_number());
-			Double goods_price =  goodsInfoService.getOneGoodsInfo(o.getGoods_id()).getGoods_price();
-			o.setGoods_sum(goods_price*o.getGoods_number());
+			Double goods_price = goodsInfoService.getOneGoodsInfo(o.getGoods_id()).getGoods_price();
+			o.setGoods_sum(goods_price * o.getGoods_number());
 			i++;
 		}
 		orderService.addOrderDetail(orderList.getOrderDetail());
-    }
+	}
+
 	/**
 	 * <p>Title: orderUpdate</p>  
 	 * <p>Description:在前端确认支付后，跳到这里进行修改orderInfo表的状态和时间 </p>  
 	 * @param orderList
 	 */
-	@RequestMapping(value ="/updateOrders", method = RequestMethod.POST)
-    public void orderUpdate(@RequestBody OrderList orderList) {
+	@RequestMapping(value = "/updateOrders", method = RequestMethod.POST)
+	public void orderUpdate(@RequestBody OrderList orderList) {
 		OrderInfo orderInfo = null;
 		Date d = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmss");
 		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String id = (String) request.getSession().getAttribute("orderId");
-		orderInfo=new OrderInfo(id,orderList.getUser_id(),
-				orderList.getConsignee_name(),orderList.getOrder_sum(),
-				"2",Timestamp.valueOf(sdf2.format(d)),Timestamp.valueOf(sdf2.format(d)));
+		orderInfo = new OrderInfo(id, orderList.getUser_id(), orderList.getConsignee_name(), orderList.getOrder_sum(),
+				"2", Timestamp.valueOf(sdf2.format(d)), Timestamp.valueOf(sdf2.format(d)));
 		orderService.updateOrderInfo(orderInfo);
 	}
-	
 
-    
 }
-

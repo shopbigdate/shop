@@ -6,7 +6,7 @@
 * @author llx  
 * @date 2019年12月9日  
 * @version 1.0  
-*/  
+*/
 package com.qrsx.springboot.service.impl;
 
 import java.util.List;
@@ -60,7 +60,7 @@ public class OrderServiceImpl implements OrderService {
 	 */
 	@Override
 	public void updateOrderInfo(OrderInfo orderInfo) {
-		orderMapper.updateOrderInfo(orderInfo);	
+		orderMapper.updateOrderInfo(orderInfo);
 	}
 
 }

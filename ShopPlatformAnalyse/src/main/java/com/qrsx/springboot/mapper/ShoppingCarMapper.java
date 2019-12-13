@@ -6,12 +6,12 @@
 * @author cjl 
 * @date 2019年12月10日  
 * @version 1.0  
-*/  
+*/
 package com.qrsx.springboot.mapper;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 import com.qrsx.springboot.pojo.ShoppingCar;
 
@@ -24,6 +24,8 @@ import com.qrsx.springboot.pojo.ShoppingCar;
 @Mapper
 public interface ShoppingCarMapper {
 	public List<ShoppingCar> search();
+
 	public List<ShoppingCar> getAllShoppingCarInfo(Integer user_id);
+
 	public void deletegoods_id(Integer goods_id);
 }

@@ -6,7 +6,7 @@
 * @author llx  
 * @date 2019年12月10日  
 * @version 1.0  
-*/  
+*/
 package com.qrsx.springboot.mapper;
 
 import java.util.List;
@@ -25,6 +25,8 @@ import com.qrsx.springboot.pojo.OrderInfo;
 @Mapper
 public interface OrderMapper {
 	void addOrderInfo(OrderInfo orderInfo);
+
 	void addOrderDetail(List<OrderDetail> orderDetail);
+
 	void updateOrderInfo(OrderInfo orderInfo);
 }
