@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+    <mapper namespace="com.qrsx.springboot.mapper.ShoppingCarMapper">
+        <select id="search" resultType="ShoppingCar">
+            select sh.shopping_car_id,gs.goods_id,gs.goods_name,gs.goods_price,sh.goods_number,sh.isbuy,sh.isshow  from goods_info gs,shopping_car sh,user_info us where gs.goods_id=sh.goods_id and sh.isshow=1
+        </select>
+        <select id="getAllShoppingCarInfo" resultType="ShoppingCar">
+            select sh.shopping_car_id,gs.goods_id,gs.goods_name,gs.goods_price,sh.goods_number,sh.isbuy,sh.isshow  from goods_info gs,shopping_car sh,user_info us where gs.goods_id=sh.goods_id and sh.isshow=1 and sh.user_id=#{user_id}
+        </select>
+        
+        <select id="deletegoods_id" parameterType="_int" resultType="ShoppingCar">
+        UPDATE shopping_car set isshow=0 where goods_id=#{goods_id};
+        </select>
+    </mapper>
