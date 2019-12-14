@@ -24,6 +24,7 @@ import com.qrsx.springboot.service.GoodsInfoService;
  */
 //RestController使用的效果是将方法返回的对象直接在浏览器上展示成json格式
 @RestController
+@RequestMapping("goods")
 public class GoodsInfoController {
 	@Autowired
 	GoodsInfoService goodsInfoService;

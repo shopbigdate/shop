@@ -9,113 +9,76 @@ package com.qrsx.springboot.pojo;
  *     
  */
 public class ShoppingCar {
+	private Integer shopping_car_id;
 	private Integer user_id;
 	private Integer goods_id;
+	private String goods_name;
+	private Double goods_price;
 	private Integer goods_number;
-	private Integer isbuy;
+	private Boolean isbuy;
 	private Integer isshow;
 
-	/**  
-	 * @Title:  getIsbuy <BR>  
-	 * @Description: please write your description <BR>  
-	 * @return: Integer <BR>  
-	 */
-	public Integer getIsbuy() {
-		return isbuy;
+	public Integer getShopping_car_id() {
+		return shopping_car_id;
 	}
 
-	/**  
-	 * @Title:  setIsbuy <BR>  
-	 * @Description: please write your description <BR>  
-	 * @return: Integer <BR>  
-	 */
-	public void setIsbuy(Integer isbuy) {
-		this.isbuy = isbuy;
+	public void setShopping_car_id(Integer shopping_car_id) {
+		this.shopping_car_id = shopping_car_id;
 	}
 
-	/**  
-	 * @Title:  getIsshow <BR>  
-	 * @Description: please write your description <BR>  
-	 * @return: Integer <BR>  
-	 */
-	public Integer getIsshow() {
-		return isshow;
-	}
-
-	/**  
-	 * @Title:  setIsshow <BR>  
-	 * @Description: please write your description <BR>  
-	 * @return: Integer <BR>  
-	 */
-	public void setIsshow(Integer isshow) {
-		this.isshow = isshow;
-	}
-
-	/**  
-	 * @Title:  getUser_id <BR>  
-	 * @Description: please write your description <BR>  
-	 * @return: Integer <BR>  
-	 */
 	public Integer getUser_id() {
 		return user_id;
 	}
 
-	/**  
-	 * @Title:  setUser_id <BR>  
-	 * @Description: please write your description <BR>  
-	 * @return: Integer <BR>  
-	 */
 	public void setUser_id(Integer user_id) {
 		this.user_id = user_id;
 	}
 
-	/**  
-	 * @Title:  getGoods_id <BR>  
-	 * @Description: please write your description <BR>  
-	 * @return: Integer <BR>  
-	 */
 	public Integer getGoods_id() {
 		return goods_id;
 	}
 
-	/**  
-	 * @Title:  setGoods_id <BR>  
-	 * @Description: please write your description <BR>  
-	 * @return: Integer <BR>  
-	 */
 	public void setGoods_id(Integer goods_id) {
 		this.goods_id = goods_id;
 	}
 
-	/**  
-	 * @Title:  getGoods_number <BR>  
-	 * @Description: please write your description <BR>  
-	 * @return: Integer <BR>  
-	 */
+	public String getGoods_name() {
+		return goods_name;
+	}
+
+	public void setGoods_name(String goods_name) {
+		this.goods_name = goods_name;
+	}
+
+	public Double getGoods_price() {
+		return goods_price;
+	}
+
+	public void setGoods_price(Double goods_price) {
+		this.goods_price = goods_price;
+	}
+
 	public Integer getGoods_number() {
 		return goods_number;
 	}
 
-	/**  
-	 * @Title:  setGoods_number <BR>  
-	 * @Description: please write your description <BR>  
-	 * @return: Integer <BR>  
-	 */
 	public void setGoods_number(Integer goods_number) {
 		this.goods_number = goods_number;
 	}
 
-	public ShoppingCar() {
-		super();
+	public Boolean getIsbuy() {
+		return isbuy;
 	}
 
-	public ShoppingCar(Integer user_id, Integer goods_id, Integer goods_number, Integer isbuy, Integer isshow) {
-		super();
-		this.user_id = user_id;
-		this.goods_id = goods_id;
-		this.goods_number = goods_number;
+	public void setIsbuy(Boolean isbuy) {
 		this.isbuy = isbuy;
+	}
+
+	public Integer getIsshow() {
+		return isshow;
+	}
+
+	public void setIsshow(Integer isshow) {
 		this.isshow = isshow;
 	}
-
 }

@@ -38,7 +38,7 @@
 		goods_id,goods_name,goods_price,goods_store,goods_detail,goods_shop,goods_category from goods_info where goods_name
 		like "%" #{goods_name} "%"
 	</select>
-	<select id="search" resultType="Goods_Info">
+	<select id="search" resultType="GoodsInfo">
 		select * from goods_info
 	</select>
 </mapper>
