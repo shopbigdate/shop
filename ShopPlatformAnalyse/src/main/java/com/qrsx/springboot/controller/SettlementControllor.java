@@ -64,11 +64,7 @@ public class SettlementControllor {
 	 * @return
 	 */
 	@RequestMapping(value = "/liusuan2", method = RequestMethod.POST)
-	//List<OrderDetail>
 	public OrderList object(@RequestBody OrderList orderList) {
-		//    	System.out.print(orderList.getOrder_sum()+"liusuan");
-		//    	System.out.print(orderList.getOrderDetail()+"cjldd");
-		//    	System.out.print("==============================");
 		HttpSession session = request.getSession();
 		session.setAttribute("user_id", 1);
 		session.setAttribute("consignee_name", "jiyang");
@@ -96,33 +92,33 @@ public class SettlementControllor {
 		return orderList;
 	}
 
-	//    @RequestMapping(value ="/orders", method = RequestMethod.POST)
-	//    public void orderAdd(@RequestBody OrderList orderList){
-	//		//orderInfo
-	//		OrderInfo orderInfo = null;
-	//		Date d = new Date();
-	//		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmss");
-	//		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	//		String orderId = sdf.format(d)+"-"+orderList.getUser_id();
-	//		HttpSession session = request.getSession();
-	//		session.setAttribute("orderId", orderId);
-	//		orderInfo=new OrderInfo(orderId,orderList.getUser_id(),
-	//				orderList.getConsignee_name(),orderList.getOrder_sum(),
-	//				orderList.getOrder_status(),Timestamp.valueOf(sdf2.format(d)),Timestamp.valueOf(sdf2.format(d)));
-	//		orderService.addOrderInfo(orderInfo);
-	//		
-	//		//orderDetail
-	//		List<OrderDetail> orderDetail = null;
-	//		int i = 0;
-	//		for(OrderDetail o : orderList.getOrderDetail()) {
-	//			o.setOrder_id(orderInfo.getOrder_id());
-	//			o.setGoods_id(orderList.getOrderDetail().get(i).getGoods_id());
-	//			o.setGoods_number(orderList.getOrderDetail().get(i).getGoods_number());
-	//			Double goods_price =  goodsInfoService.getOneGoodsInfo(o.getGoods_id()).getGoods_price();
-	//			o.setGoods_sum(goods_price*o.getGoods_number());
-	//			orderService.addOrderDetail(o);
-	//			i++;
-	//		}
-	//    }
+	/*@RequestMapping(value = "/orders", method = RequestMethod.POST)
+	public void orderAdd(@RequestBody OrderList orderList) {
+		//orderInfo
+		OrderInfo orderInfo = null;
+		Date d = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmss");
+		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String orderId = sdf.format(d) + "-" + orderList.getUser_id();
+		HttpSession session = request.getSession();
+		session.setAttribute("orderId", orderId);
+		orderInfo = new OrderInfo(orderId, orderList.getUser_id(), orderList.getConsignee_name(),
+				orderList.getOrder_sum(), orderList.getOrder_status(), Timestamp.valueOf(sdf2.format(d)),
+				Timestamp.valueOf(sdf2.format(d)));
+		orderService.addOrderInfo(orderInfo);
+
+		//orderDetail
+		List<OrderDetail> orderDetail = null;
+		int i = 0;
+		for (OrderDetail o : orderList.getOrderDetail()) {
+			o.setOrder_id(orderInfo.getOrder_id());
+			o.setGoods_id(orderList.getOrderDetail().get(i).getGoods_id());
+			o.setGoods_number(orderList.getOrderDetail().get(i).getGoods_number());
+			Double goods_price = goodsInfoService.getOneGoodsInfo(o.getGoods_id()).getGoods_price();
+			o.setGoods_sum(goods_price * o.getGoods_number());
+			orderService.addOrderDetail(o);
+			i++;
+		}
+	}*/
 
 }

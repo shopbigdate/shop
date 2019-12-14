@@ -4,6 +4,17 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.qrsx.springboot.mapper.GoodsInfoMapper">
+	<parameterMap id="pm" type="java.util.Map">
+		<parameter property="goods_id" jdbcType="INTEGER" mode="IN" />
+		<parameter property="goods_number" jdbcType="INTEGER" mode="IN" />
+		<parameter property="user_id" jdbcType="INTEGER" mode="IN" />
+		<parameter property="result" jdbcType="INTEGER" mode="OUT" />
+	</parameterMap>
+
+	<select id="createShoppingCar" parameterMap="pm" statementType="CALLABLE">
+		{call create_shopping_car(?,?,?,?)}
+	</select>
+
 	<select id="getOneGoodsInfo" resultType="GoodsInfo">
 		select
 		goods_id,goods_name,goods_price,goods_store,goods_detail,goods_shop,goods_category
@@ -19,26 +30,15 @@
 		goods_id=#{goods_id}
 	</select>
 
-	<select id="createShoppingCar" parameterMap="pm" statementType="CALLABLE">
-
-		{call create_shopping_car(?,?,?,?)}
-
-	</select>
-
-	<parameterMap id="pm" type="java.util.Map">
-		<parameter property="goods_id" jdbcType="INTEGER" mode="IN" />
-		<parameter property="goods_number" jdbcType="INTEGER" mode="IN" />
-		<parameter property="user_id" jdbcType="INTEGER" mode="IN" />
-		<parameter property="result" jdbcType="INTEGER" mode="OUT" />
-	</parameterMap>
-
 	<!-- 模糊查询 -->
 	<select id="vague" parameterType="String" resultType="GoodsInfo">
 		select
 		goods_id,goods_name,goods_price,goods_store,goods_detail,goods_shop,goods_category from goods_info where goods_name
 		like "%" #{goods_name} "%"
 	</select>
+
 	<select id="search" resultType="GoodsInfo">
 		select * from goods_info
 	</select>
+
 </mapper>

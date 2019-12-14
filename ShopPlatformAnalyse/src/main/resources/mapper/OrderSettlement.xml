@@ -5,13 +5,18 @@
 
 <mapper namespace="com.qrsx.springboot.mapper.OrderGeneralDetailsMapper">
 	<select id="search" resultType="OrderDetail">
-		select g.goods_id,s.goods_number from goods_info g,shopping_car s where g.goods_id=s.goods_id;
+		select g.goods_id,s.goods_number from goods_info g,shopping_car s where
+		g.goods_id=s.goods_id;
 	</select>
+
 	<select id="detial" resultType="OrderDetail">
-		select g.goods_id,s.goods_number,#{gn} goods_sum from goods_info g,shopping_car s where g.goods_id=s.goods_id;
+		select g.goods_id,s.goods_number,#{gn} goods_sum from goods_info g,shopping_car s
+		where g.goods_id=s.goods_id;
 	</select>
+
 	<select id="user_iddetial" resultType="UserInfo">
-		select us.user_id,os.consignee_name,us.user_phone,us.user_address from user_info us,order_info os where
+		select us.user_id,os.consignee_name,us.user_phone,us.user_address from
+		user_info us,order_info os where
 		us.user_id=os.user_id and us.user_id=#{user_id};
 	</select>
 </mapper>
