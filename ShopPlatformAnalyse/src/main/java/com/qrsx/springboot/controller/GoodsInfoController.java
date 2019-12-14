@@ -29,9 +29,10 @@ public class GoodsInfoController {
 	GoodsInfoService goodsInfoService;
 
 	@GetMapping("/search")
-    public List<Goods_Info> search(){
-        return goods_info_Service.search();
-    }
+	public List<GoodsInfo> search() {
+		return goodsInfoService.search();
+	}
+
 	@GetMapping("/vague")
 	public List<GoodsInfo> vague(String goods_name) {
 		return goodsInfoService.vague(goods_name);

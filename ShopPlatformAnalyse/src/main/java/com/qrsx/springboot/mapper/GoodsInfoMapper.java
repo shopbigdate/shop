@@ -27,6 +27,7 @@ public interface GoodsInfoMapper {
 
 	//主页搜索vague
 	List<GoodsInfo> vague(String goods_name);
+
 	//全部查找
-	List<Goods_Info> search();
+	List<GoodsInfo> search();
 }
