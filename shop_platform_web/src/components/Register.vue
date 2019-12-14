@@ -19,9 +19,7 @@
 						<span class="hint" style="color: red;">{{hint.nameHint}}</span>
 					</div>
 					<div class="input_control">
-						<label>
-                <input type="password" class="form_input" v-model="userInfo.userPassword" placeholder="请输入你的密码" @blur="password" />
-              </label>
+						<input type="password" class="form_input" v-model="userInfo.userPassword" placeholder="请输入你的密码" @blur="password" />
 						<span class="hint" style="color: red;">{{hint.pwdHint}}</span>
 					</div>
 					<div class="input_control">
@@ -33,7 +31,7 @@
 						<span class="hint" style="color: red;">{{hint.linkHint}}</span>
 					</div>
 					<div class="input_control">
-						<button id="btd" class="ant-btn-red" @click="flag" :disabled="btn">立即注册</button>
+						<button id="btd" class="ant-btn-red" @click.prevent="flag" :disabled="btn">立即注册</button>
 					</div>
 				</form>
 			</div>
@@ -82,6 +80,7 @@
 				},
 			}
 		},
+
 		methods: {
 			//用户名
 			username: function() {
@@ -123,6 +122,7 @@
 					this.hint.pwdHint = '';
 				}
 			},
+
 			passwordAgain: function() {
 				this.hint.pwdHint1 = '';
 				if(this.userInfo.password2 === 0) {
@@ -133,6 +133,7 @@
 					this.hint.pwdHint1 = '';
 				}
 			},
+
 			link: function() {
 				this.hint.linkHint = '';
 				var n = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
@@ -144,12 +145,16 @@
 					this.hint.linkHint = '';
 				}
 			},
+
 			flag: function() {
 				this.hint.nameHint = '';
 				this.hint.pwdHint = '';
 				this.hint.pwdHint1 = '';
 				this.hint.linkHint = '';
 				let formData = JSON.stringify(this.userInfo);
+				var p = /^[a-zA-z][a-zA-Z0-9_]{5,15}$/;
+				var n = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
+
 				if(this.userInfo.userName.length === 0)
 					this.hint.nameHint = '用户名不能为空';
 				else if(this.userInfo.userName.length < 3 || this.userInfo.userName.length > 15)
@@ -157,56 +162,50 @@
 				else {
 					var self = this;
 					this.$axios({
-							method: "post",
-							url: 'http://localhost:8888/user/select',
-							data: formData,
-							headers: {
-								'Content-Type': 'application/json;charset=UTF-8'
-							}
-						})
-						.then(function(dat) {
-							if(dat.data == true) {
-								self.hint.nameHint = '恭喜,用户名可用'
-							} else if(dat.data == false) {
-								self.hint.nameHint = '用户名已存在,请重新创建'
-							}
-						})
-				}
-				var p = /^[a-zA-z][a-zA-Z0-9_]{5,15}$/;
-				if(this.userInfo.userPassword.length === 0) {
-					this.hint.pwdHint = '密码不能为空';
-				} else if(!p.test(this.userInfo.userPassword)) {
-					this.hint.pwdHint = '由字母+数字组成的6-16位密码，字母开头'
-				}
-				if(this.userInfo.password2 === 0) {
-					this.hint.pwdHint1 = '重复密码不能为空！！'
-				} else if(this.userInfo.password2 !== this.userInfo.password2) {
-					this.hint.pwdHint1 = '前后两次密码不一致!';
-				}
-				var n = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
-				if(this.userInfo.userPhone.length === 0) {
-					this.hint.linkHint = '手机号不能为空!';
-				} else if(!n.test(this.userInfo.userPhone)) {
-					this.hint.linkHint = '手机号格式不正确!';
-				} else {
-					this.$axios({
-							method: "post",
-							url: 'http://localhost:8888/user/register',
-							data: formData,
-							headers: {
-								'Content-Type': 'application/json;charset=UTF-8'
-							}
-						})
-						.then((dat) => {
-							if(dat.data == 1) {
-								alert("注册成功")
-								this.$router.push({
-								path: '/Login'
-							});
+						method: "post",
+						url: 'http://localhost:8888/user/select',
+						data: formData,
+						headers: {
+							'Content-Type': 'application/json;charset=UTF-8'
+						}
+					}).then((dat) => {
+						if(!dat.data) {
+							self.hint.nameHint = '用户名已存在，请重新创建'
+						} else { //用户名可用
+							if(this.userInfo.userPassword.length === 0) {
+								this.hint.pwdHint = '密码不能为空';
+							} else if(!p.test(this.userInfo.userPassword)) {
+								this.hint.pwdHint = '由字母+数字组成的6-16位密码，字母开头'
+							} else if(this.userInfo.password2 === 0) {
+								this.hint.pwdHint1 = '重复密码不能为空！！'
+							} else if(this.userInfo.userPassword !== this.userInfo.password2) {
+								this.hint.pwdHint1 = '前后两次密码不一致!';
+							} else if(this.userInfo.userPhone.length === 0) {
+								this.hint.linkHint = '手机号不能为空!';
+							} else if(!n.test(this.userInfo.userPhone)) {
+								this.hint.linkHint = '手机号格式不正确!';
 							} else {
-								alert("注册失败")
+								this.$axios({
+										method: "post",
+										url: 'http://localhost:8888/user/register',
+										data: formData,
+										headers: {
+											'Content-Type': 'application/json;charset=UTF-8'
+										}
+									})
+									.then((dat) => {
+										if(dat.data == 1) {
+											alert("注册成功")
+											this.$router.push({
+												path: '/Login'
+											});
+										} else {
+											alert("注册失败")
+										}
+									})
 							}
-						})
+						}
+					});
 				}
 			}
 		}
@@ -253,6 +252,7 @@
 		text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
 		-webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
 		box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+		cursor: pointer;
 	}
 	
 	#re {

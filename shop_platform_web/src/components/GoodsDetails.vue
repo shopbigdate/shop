@@ -16,7 +16,7 @@
 						<a href="#">我的信息</a>
 						<ul class="info">
 							<li class="touxiang">
-								<img src="../../static/image/touxiang-jzx.png" title="头像" alt="对不起图片加载失败..." width="50" height="50">
+								<img src="../../static/images/touxiang-jzx.png" title="头像" alt="对不起图片加载失败..." width="50" height="50">
 								<p>您好
 									<a href="#">请登录</a>
 								</p>
@@ -44,7 +44,7 @@
 					<li>
 						<a href="#">手机APP</a>
 						<ul>
-							<li class="APP"><img src="../../static/image/erweima-jzx.png" title="APP二维码" alt="对不起图片加载失败..."></li>
+							<li class="APP"><img src="../../static/images/erweima-jzx.png" title="APP二维码" alt="对不起图片加载失败..."></li>
 						</ul>
 					</li>
 					<li>京东资讯</li>
@@ -55,11 +55,11 @@
 			<!--导航-->
 			<div class="navigtion">
 				<div class="logo">
-					<img src="../../static/image/logo-201305-b.png" title="logo" alt="对不起图片加载失败..." width="240px">
+					<img src="../../static/images/logo-201305-b.png" title="logo" alt="对不起图片加载失败..." width="240px">
 				</div>
 				<div class="search">
-					<input type="text" class="sear" name="keyword" value="">
-					<button id="search" class="search-jzx">搜索</button>
+					<input type="text" class="sear" name="keyword" v-model="str">
+					<button id="search" class="search-jzx" v-on:click="trans()">搜索</button>
 					<div class="sousuo">
 						<a href="#">Rival 300</a>
 						<a href="#">炼狱蝰蛇</a>
@@ -122,8 +122,8 @@
 					<!--放大镜左侧小图片第三个-->
 				</div>
 				<div class="wrapp">
-					<a href="../../static/image/fang_shubiao1_zxr.jpg" class="img1">
-						<img src="../../static/image/fang_shubiao1_zxr.jpg">
+					<a href="../../static/images/fang_shubiao1_zxr.jpg" class="img1">
+						<img src="../../static/images/fang_shubiao1_zxr.jpg">
 						<!--放大镜主图片-->
 					</a>
 				</div>
@@ -199,7 +199,7 @@
 
 				</div>
 				<div class="shubiaoshow_zxr">
-					<img src="../../static/image/fang_shubiao1_zxr.jpg">
+					<img src="../../static/images/fang_shubiao1_zxr.jpg">
 					<form action="">
 						<table>
 							<tr>
@@ -223,73 +223,73 @@
 					</div>
 				</div>
 				<div class="shubiaoshow_zxr shu1">
-					<img src="../../static/image/noavatar.gif">
+					<img src="../../static/images/noavatar.gif">
 					<p>9月份买的，11月底开始发生回滚，外设天下的售后还有这所谓赛睿的售后垃圾得一B，唉</p>
 					<div class="shouhou_zxr">
-						<img src="../../static/image/avatar.png">
+						<img src="../../static/images/avatar.png">
 						<p>您好，赛睿提供一年质保，非人为质量问题一年换新，出现问题请联系官方售后。</p>
 					</div>
 					<div class="user_zxr"><span id="user">gh***d</span><span id="date">2016/12/5 17:06:26</span><span id="sbcolor">黑色</span></div>
 				</div>
 				<div class="shubiaoshow_zxr shu1">
-					<img src="../../static/image/noavatar.gif">
+					<img src="../../static/images/noavatar.gif">
 					<p>9月份买的，11月底开始发生回滚，外设天下的售后还有这所谓赛睿的售后垃圾得一B，唉</p>
 					<div class="shouhou_zxr">
-						<img src="../../static/image/avatar.png">
+						<img src="../../static/images/avatar.png">
 						<p>您好，赛睿提供一年质保，非人为质量问题一年换新，出现问题请联系官方售后。</p>
 					</div>
 					<div class="user_zxr"><span id="user">gh***d</span><span id="date">2016/12/5 17:06:26</span><span id="sbcolor">黑色</span></div>
 				</div>
 				<div class="shubiaoshow_zxr shu1">
-					<img src="../../static/image/noavatar.gif">
+					<img src="../../static/images/noavatar.gif">
 					<p>9月份买的，11月底开始发生回滚，外设天下的售后还有这所谓赛睿的售后垃圾得一B，唉</p>
 					<div class="shouhou_zxr">
-						<img src="../../static/image/avatar.png">
+						<img src="../../static/images/avatar.png">
 						<p>您好，赛睿提供一年质保，非人为质量问题一年换新，出现问题请联系官方售后。</p>
 					</div>
 					<div class="user_zxr"><span id="user">gh***d</span><span id="date">2016/12/5 17:06:26</span><span id="sbcolor">黑色</span></div>
 				</div>
 				<div class="shubiaoshow_zxr shu1">
-					<img src="../../static/image/noavatar.gif">
+					<img src="../../static/images/noavatar.gif">
 					<p>9月份买的，11月底开始发生回滚，外设天下的售后还有这所谓赛睿的售后垃圾得一B，唉</p>
 					<div class="shouhou_zxr">
-						<img src="../../static/image/avatar.png">
+						<img src="../../static/images/avatar.png">
 						<p>您好，赛睿提供一年质保，非人为质量问题一年换新，出现问题请联系官方售后。</p>
 					</div>
 					<div class="user_zxr"><span id="user">gh***d</span><span id="date">2016/12/5 17:06:26</span><span id="sbcolor">黑色</span></div>
 				</div>
 				<div class="shubiaoshow_zxr shu1">
-					<img src="../../static/image/noavatar.gif">
+					<img src="../../static/images/noavatar.gif">
 					<p>9月份买的，11月底开始发生回滚，外设天下的售后还有这所谓赛睿的售后垃圾得一B，唉</p>
 					<div class="shouhou_zxr">
-						<img src="../../static/image/avatar.png">
+						<img src="../../static/images/avatar.png">
 						<p>您好，赛睿提供一年质保，非人为质量问题一年换新，出现问题请联系官方售后。</p>
 					</div>
 					<div class="user_zxr"><span id="user">gh***d</span><span id="date">2016/12/5 17:06:26</span><span id="sbcolor">黑色</span></div>
 				</div>
 				<div class="shubiaoshow_zxr shu1">
-					<img src="../../static/image/noavatar.gif">
+					<img src="../../static/images/noavatar.gif">
 					<p>9月份买的，11月底开始发生回滚，外设天下的售后还有这所谓赛睿的售后垃圾得一B，唉</p>
 					<div class="shouhou_zxr">
-						<img src="../../static/image/avatar.png">
+						<img src="../../static/images/avatar.png">
 						<p>您好，赛睿提供一年质保，非人为质量问题一年换新，出现问题请联系官方售后。</p>
 					</div>
 					<div class="user_zxr"><span id="user">gh***d</span><span id="date">2016/12/5 17:06:26</span><span id="sbcolor">黑色</span></div>
 				</div>
 				<div class="shubiaoshow_zxr shu1">
-					<img src="../../static/image/noavatar.gif">
+					<img src="../../static/images/noavatar.gif">
 					<p>9月份买的，11月底开始发生回滚，外设天下的售后还有这所谓赛睿的售后垃圾得一B，唉</p>
 					<div class="shouhou_zxr">
-						<img src="../../static/image/avatar.png">
+						<img src="../../static/images/avatar.png">
 						<p>您好，赛睿提供一年质保，非人为质量问题一年换新，出现问题请联系官方售后。</p>
 					</div>
 					<div class="user_zxr"><span id="user">gh***d</span><span id="date">2016/12/5 17:06:26</span><span id="sbcolor">黑色</span></div>
 				</div>
 				<div class="shubiaoshow_zxr shu1">
-					<img src="../../static/image/noavatar.gif">
+					<img src="../../static/images/noavatar.gif">
 					<p>9月份买的，11月底开始发生回滚，外设天下的售后还有这所谓赛睿的售后垃圾得一B，唉</p>
 					<div class="shouhou_zxr">
-						<img src="../../static/image/avatar.png">
+						<img src="../../static/images/avatar.png">
 						<p>您好，赛睿提供一年质保，非人为质量问题一年换新，出现问题请联系官方售后。</p>
 					</div>
 					<div class="user_zxr"><span id="user">gh***d</span><span id="date">2016/12/5 17:06:26</span><span id="sbcolor">黑色</span></div>
@@ -318,61 +318,61 @@
 					<div class="shubiaoshow_zxr shu1 shuai">
 						<div class="lunbo_zxr">
 							<div class="float_lunbo_zxr1">
-								<img src="../../static/image/pir_zxr_2.jpg">
+								<img src="../../static/images/pir_zxr_2.jpg">
 								<p>卓威奇亚（Zowie gear）CA..</p>
 								<span>149.00</span>
 								<p>0人好评</p>
 							</div>
 							<div class="float_lunbo_zxr">
-								<img src="../../static/image/pig9_zxr.jpg">
+								<img src="../../static/images/pig9_zxr.jpg">
 								<p>卓威奇亚（Zowie gear）CA..</p>
 								<span>149.00</span>
 								<p>0人好评</p>
 							</div>
 							<div class="float_lunbo_zxr">
-								<img src="../../static/image/pig11_zxr.jpg">
+								<img src="../../static/images/pig11_zxr.jpg">
 								<p>卓威奇亚（Zowie gear）CA..</p>
 								<span>149.00</span>
 								<p>0人好评</p>
 							</div>
 							<div class="float_lunbo_zxr">
-								<img src="../../static/image/pig12_zxr.jpg">
+								<img src="../../static/images/pig12_zxr.jpg">
 								<p>卓威奇亚（Zowie gear）CA..</p>
 								<span>149.00</span>
 								<p>0人好评</p>
 							</div>
 							<div class="float_lunbo_zxr">
-								<img src="../../static/image/pig13_zxr.jpg">
+								<img src="../../static/images/pig13_zxr.jpg">
 								<p>卓威奇亚（Zowie gear）CA..</p>
 								<span>149.00</span>
 								<p>0人好评</p>
 							</div>
 							<div class="float_lunbo_zxr1">
-								<img src="../../static/image/pir_zxr_2.jpg">
+								<img src="../../static/images/pir_zxr_2.jpg">
 								<p>卓威奇亚（Zowie gear）CA..</p>
 								<span>149.00</span>
 								<p>0人好评</p>
 							</div>
 							<div class="float_lunbo_zxr">
-								<img src="../../static/image/pig9_zxr.jpg">
+								<img src="../../static/images/pig9_zxr.jpg">
 								<p>卓威奇亚（Zowie gear）CA..</p>
 								<span>149.00</span>
 								<p>0人好评</p>
 							</div>
 							<div class="float_lunbo_zxr">
-								<img src="../../static/image/pig11_zxr.jpg">
+								<img src="../../static/images/pig11_zxr.jpg">
 								<p>卓威奇亚（Zowie gear）CA..</p>
 								<span>149.00</span>
 								<p>0人好评</p>
 							</div>
 							<div class="float_lunbo_zxr">
-								<img src="../../static/image/pig12_zxr.jpg">
+								<img src="../../static/images/pig12_zxr.jpg">
 								<p>卓威奇亚（Zowie gear）CA..</p>
 								<span>149.00</span>
 								<p>0人好评</p>
 							</div>
 							<div class="float_lunbo_zxr">
-								<img src="../../static/image/pig13_zxr.jpg">
+								<img src="../../static/images/pig13_zxr.jpg">
 								<p>卓威奇亚（Zowie gear）CA..</p>
 								<span>149.00</span>
 								<p>0人好评</p>
@@ -454,7 +454,7 @@
 				</ul>
 			</div>
 			<div class="item-service">
-				<h4 class="txt"><img src="../../static/image/touxiang-jzx.png" width="20px"> 客户服务</h4>
+				<h4 class="txt"><img src="../../static/images/touxiang-jzx.png" width="20px"> 客户服务</h4>
 				<ul>
 					<li><i class="fa-caret-right"></i> 周一至周日 09:00-24:00</li>
 					<li><i class="fa-caret-right fa-qq"></i>: 4006167778</li>
@@ -463,7 +463,7 @@
 			<div class="item-twodcode">
 				<h4 class="txt">微信公众号</h4>
 				<ul>
-					<li><img src="../../static/image/erweima-jzx.png" width="60px"></li>
+					<li><img src="../../static/images/erweima-jzx.png" width="60px"></li>
 				</ul>
 			</div>
 			<div class="container">
@@ -473,7 +473,7 @@
 		<div class="fird_zxr">
 			<div class="main_zxr">
 				<div class="smaillogo">
-					<img src="../../static/image/fang_shubiao1_zxr.jpg">
+					<img src="../../static/images/fang_shubiao1_zxr.jpg">
 					<p>赛睿（SteelSeries）Kinzu <br>
 						<span>119.00</span></p>
 				</div>
@@ -500,8 +500,8 @@
 				goodsInfo: [],
 				goodspicture: [],
 				store: 0,
-				goods_id: 3306,
-				user_id: 321,
+				goods_id: 0,
+				user_id: 1,
 				result: 0,
 				maxstore: 0
 			}
@@ -512,11 +512,24 @@
 			this.getGoodsPicture();
 		},
 
+		created: function() {
+			this.goods_id = this.$route.query.goods_id
+		},
+
 		methods: {
+			trans() {
+				this.$router.push({
+					path: '/',
+					query: {
+						str: this.str
+					}
+				})
+			},
+
 			count() {
 				var url = "http://localhost:8888/goods/goodsinfo/";
 				this.$axios.post(url, JSON.stringify({
-						goods_id: this.goods_id
+						goods_id: this.good_id
 					}), {
 						headers: {
 							'Content-Type': 'application/json;charset=UTF-8'
@@ -524,24 +537,22 @@
 					})
 					.then(response => {
 						this.maxstore = response.data.goods_store;
-
 					});
+
 				if(this.clickNumber < this.maxstore)
 					this.clickNumber++;
 				else if(this.clickNumber > this.maxstore) {
 					alert("数据已更新，请刷新页面")
 				}
 			},
+
 			minus() {
-				if(this.clickNumber > 0) {
+				if(this.clickNumber > 1) {
 					this.clickNumber--;
-				} else if(this.clickNumber == 0) {
-					this.clickNumber = this.maxstore
 				}
 			},
 
 			getGoodsInfo() {
-
 				var url = "http://localhost:8888/goods/goodsinfo/";
 				this.$axios.post(url, JSON.stringify({
 						goods_id: this.goods_id
@@ -551,7 +562,6 @@
 						}
 					})
 					.then(response => {
-
 						this.goodsInfo = response.data;
 						if(this.goodsInfo.goods_store == 0) {
 							this.store = "商品暂时无货";
@@ -561,10 +571,11 @@
 						}
 					})
 			},
+
 			getGoodsPicture() {
 				var url = "http://localhost:8888/goods/goodspicture/";
 				this.$axios.post(url, JSON.stringify({
-						goods_id: this.goods_id
+						goods_id: 3306
 					}), {
 						headers: {
 							'Content-Type': 'application/json;charset=UTF-8'
@@ -575,6 +586,7 @@
 
 					})
 			},
+
 			createclickNumber() {
 				var url = "http://localhost:8888/goods/createShoppingCar/";
 				this.$axios.post(url, JSON.stringify({

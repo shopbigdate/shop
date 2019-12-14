@@ -4,7 +4,6 @@
 		<header>
 			<div class="w">
 				<a href="#">
-
 				</a>
 			</div>
 		</header>
@@ -18,7 +17,7 @@
 				<ul class="fr ">
 					<li>
 						<router-link to="/Login">你好，请登录</router-link>
-						<router-link to="/shopping/register" class="f10">免费注册</router-link>
+						<router-link to="/register" class="f10">免费注册</router-link>
 					</li>
 					<li class="space"></li>
 					<li>
@@ -124,26 +123,7 @@
 		</div>
 		<!-- 导航栏--end -->
 		<div align="center">
-			<!--<table>        
-									<tr>
-										<td>商品编号</td>
-										<td>商品名称</td>
-										<td>商品价格</td>
-										<td>商品库存</td>
-										<td>商品详情</td>
-										<td>商家名称</td>
-										<td>商品分类</td>
-									</tr>              
-									<tr v-for="goods_info in good">
-										<td>{{goods_info.goods_id}}</td>
-										<td><router-link :to="{path:'/vuser',query: {goods_id:goods_info.goods_id}}">{{goods_info.goods_name}}</router-link></td>
-										<td>{{goods_info.goods_price}}</td>
-										<td>{{goods_info.goods_store}}</td>
-										<td>{{goods_info.goods_detail}}</td>
-										<td>{{goods_info.goods_shop}}</td>
-										<td>{{goods_info.goods_category}}</td>
-									</tr>
-							</table>-->
+
 		</div>
 
 		<!-- 页面底部--start -->
@@ -156,7 +136,7 @@
 				</el-table-column>
 				<el-table-column label="商品名称" width="180" align="center">
 					<template slot-scope="scope">
-						<router-link :to="{name:'vuser',query: {goods_id:scope.row.goods_id}}">{{scope.row.goods_name}}</router-link>
+						<router-link :to="{name:'goods_details',query: {goods_id:scope.row.goods_id}}">{{scope.row.goods_name}}</router-link>
 					</template>
 				</el-table-column>
 				<el-table-column label="商品价格" prop="goods_price" width="180" align="center">
@@ -169,7 +149,6 @@
 				</el-table-column>
 				<el-table-column label="商品分类" prop="goods_category" width="180" align="center">
 				</el-table-column>
-
 			</el-table>
 			<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="[2, 4, 6, 8]" :page-size="pagesize" layout="total, sizes, prev, pager, next, jumper" :total="good.length">
 			</el-pagination>
@@ -429,12 +408,13 @@
 				good: [],
 				cur: 0,
 				currentPage: 1,
-				pagesize: 2,
+				pagesize: 4,
 				str: ""
 			}
 		},
 		mounted: function() {
-			this.search()
+			this.searchall();
+			this.getParams();
 		},
 		methods: {
 			handleSizeChange: function(size) {
@@ -448,10 +428,22 @@
 			search: function() {
 				var g = this
 				var goods_name = g.str.toUpperCase();
-				var url = 'http://localhost:8888/vague?goods_name=' + goods_name;
+				var url = 'http://localhost:8888/goods/vague?goods_name=' + goods_name;
 				axios.get(url).then(function(response) {
 					g.good = response.data;
 				})
+			},
+			searchall: function() {
+				var g = this
+				var url = 'http://localhost:8888/goods/search';
+				axios.get(url).then(function(response) {
+					g.good = response.data;
+				})
+			},
+			getParams() {
+				// 取到路由带过来的参数
+				this.str = this.$route.query.str
+				console.log(this.str)
 			},
 			headClass() {
 				return 'text-align: center;background:#eef1f6;'

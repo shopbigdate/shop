@@ -30,7 +30,7 @@
 								<font size="2" style="float:right;height: 20px;">忘记密码</font>
 							</a>
 							<br><br>
-							<button @click="onSubmit" class="submit">登录</button>
+							<button @click.prevent="onSubmit" class="submit">登录</button>
 						</form>
 					</div>
 					<div class="second_first_first_forth">
@@ -40,8 +40,9 @@
 						丨&nbsp
 						<label for="weixin" class="label_weixin"></label>
 						<a href="" name="weixin" class="weixin">&nbsp&nbsp&nbsp&nbsp&nbsp微信</a>
-
-						<a href="" style="float:right"><label class="zhuce"></label>&nbsp&nbsp&nbsp&nbsp立即注册&nbsp&nbsp&nbsp&nbsp</a>
+						<router-link to="/register" style="float:right">
+							<label class="zhuce"></label>&nbsp&nbsp&nbsp&nbsp立即注册&nbsp&nbsp&nbsp&nbsp
+						</router-link>
 					</div>
 				</div>
 			</div>
