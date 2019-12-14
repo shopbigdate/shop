@@ -76,5 +76,9 @@ public class GoodsInfoServiceImpl implements GoodsInfoService {
 		//主页搜索vague
 		return goodsInfoMapper.vague(goods_name);
 	}
+	@Override
+	public List<Goods_Info> search() {
+		return goods_info_Mapper.search();
+	}
 
 }

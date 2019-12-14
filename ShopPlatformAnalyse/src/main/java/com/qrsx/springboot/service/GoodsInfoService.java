@@ -24,5 +24,7 @@ public interface GoodsInfoService {
 
 	//主页搜索vague
 	public List<GoodsInfo> vague(String goods_name);
+	//全部查找
+	public List<Goods_Info> search();
 
 }
