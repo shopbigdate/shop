@@ -554,20 +554,18 @@
 						message: '支付成功!'
 					});
 					axios.post(url2, formData, {
-					headers: {
-						'Content-Type': 'application/json;charset=UTF-8'
-					}
-				}).then(function(response) {
-					console.log(response);
-				})
+						headers: {
+							'Content-Type': 'application/json;charset=UTF-8'
+						}
+					}).then(function(response) {
+						console.log(response);
+					})
 				}).catch(() => {
 					self.$message({
 						type: 'info',
 						message: '支付失败!'
 					});
 				});
-
-				
 
 			}
 

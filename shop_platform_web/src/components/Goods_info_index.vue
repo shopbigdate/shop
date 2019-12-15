@@ -130,8 +130,6 @@
 
 		<div align="center">
 			<el-table style="width: 100%;" :header-cell-style="rowClass" :data="good.slice((currentPage-1)*pagesize,currentPage*pagesize)">
-				<el-table-column type="index" width="100">
-				</el-table-column>
 				<el-table-column label="商品编号" prop="goods_id" width="180" align="center">
 				</el-table-column>
 				<el-table-column label="商品名称" width="180" align="center">
@@ -443,7 +441,6 @@
 			getParams() {
 				// 取到路由带过来的参数
 				this.str = this.$route.query.str
-				console.log(this.str)
 			},
 			headClass() {
 				return 'text-align: center;background:#eef1f6;'

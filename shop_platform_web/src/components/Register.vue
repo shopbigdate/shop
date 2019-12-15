@@ -103,7 +103,7 @@
 						})
 						.then(function(dat) {
 							if(dat.data == true) {
-								self.hint.nameHint = '恭喜,用户名可用'
+								self.hint.nameHint = '恭喜，用户名可用'
 							} else if(dat.data == false) {
 								self.hint.nameHint = '用户名已存在,请重新创建'
 							}

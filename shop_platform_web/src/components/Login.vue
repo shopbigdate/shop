@@ -25,7 +25,7 @@
 							<label for="password" class="label2"></label>
 							<input type="password" class="password" v-model="input.userPassword" placeholder="密码" @blur="onPass">
 							<br>
-							<div class="msg" v-model="input.msg">{{input.msg}}</div>
+							<div class="msg" v-model="msg">{{msg}}</div>
 							<a href="" style="height: 20px;">
 								<font size="2" style="float:right;height: 20px;">忘记密码</font>
 							</a>
@@ -98,8 +98,8 @@
 				input: {
 					userName: '',
 					userPassword: '',
-					msg: ''
-				}
+				},
+				msg: ''
 			}
 		},
 		methods: {
@@ -122,7 +122,7 @@
 								path: '/'
 							});
 						} else { //登录失败
-							this.input.msg = "用户名或密码输入错误"
+							this.msg = "用户名或密码输入错误"
 						}
 					}
 				}).catch((error) => {
@@ -130,14 +130,14 @@
 				})
 			},
 			onUser() {
-				this.input.msg = ""
+				this.msg = ""
 				if(this.input.userName == "")
-					this.input.msg = "用户名不能为空"
+					this.msg = "用户名不能为空"
 			},
 			onPass() {
-				this.input.msg = ""
+				this.msg = ""
 				if(this.input.userPassword == "")
-					this.input.msg = "密码不能为空"
+					this.msg = "密码不能为空"
 			}
 		}
 	}
