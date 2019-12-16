@@ -10,7 +10,7 @@ import com.qrsx.springboot.pojo.UserInfo;
  *
  */
 public interface UserInfoService {
-	//登录，验证用户名和密码，并修改状态
+	//登录，验证用户名和密码，并当活跃状态为0时，修改活跃状态为1。
 	UserInfo userLogin(UserInfo userInfo);
 
 	/**

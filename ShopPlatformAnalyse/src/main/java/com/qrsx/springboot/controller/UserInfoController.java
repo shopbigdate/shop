@@ -30,7 +30,7 @@ public class UserInfoController {
 	private UserInfoService userInfoService;
 
 	//登录
-	@RequestMapping("login")
+	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public Boolean login(@RequestBody UserInfo userInfo, HttpSession session) {
 		//使用MD5对密码加密
 		String pass = null;
@@ -42,7 +42,7 @@ public class UserInfoController {
 			e.printStackTrace();
 		}
 		userInfo.setUserPassword(pass);
-		//验证用户名和密码，并修改状态
+		//验证用户名和密码，并当活跃状态为0时，修改活跃状态为1。
 		UserInfo userInfo1 = userInfoService.userLogin(userInfo);
 		if (userInfo1 != null) {
 			session.setAttribute("UserInfo", userInfo1);
