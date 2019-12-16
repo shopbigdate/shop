@@ -69,7 +69,7 @@
 					</div>
 				</div>
 				<div class="sopping-jzx">
-					<a href="#">我的购物车></a>
+					<router-link to="/shoppingCar">我的购物车</router-link>
 				</div>
 			</div>
 			<div class="clear"></div>
@@ -499,11 +499,12 @@
 				clickNumber: 1,
 				goodsInfo: [],
 				goodspicture: [],
-				store: 0,
+				store: "",
 				goods_id: 0,
 				user_id: 1,
 				result: 0,
-				maxstore: 0
+				maxstore: 0,
+				str: ""
 			}
 		},
 
@@ -529,7 +530,7 @@
 			count() {
 				var url = "http://localhost:8888/goods/goodsinfo/";
 				this.$axios.post(url, JSON.stringify({
-						goods_id: this.good_id
+						goods_id: this.goods_id
 					}), {
 						headers: {
 							'Content-Type': 'application/json;charset=UTF-8'
@@ -537,13 +538,12 @@
 					})
 					.then(response => {
 						this.maxstore = response.data.goods_store;
+						if(this.clickNumber < this.maxstore)
+							this.clickNumber++;
+						else if(this.clickNumber > this.maxstore) {
+							alert("数据已更新，请刷新页面")
+						}
 					});
-
-				if(this.clickNumber < this.maxstore)
-					this.clickNumber++;
-				else if(this.clickNumber > this.maxstore) {
-					alert("数据已更新，请刷新页面")
-				}
 			},
 
 			minus() {
@@ -567,7 +567,8 @@
 							this.store = "商品暂时无货";
 						} else {
 							this.store = this.goodsInfo.goods_store + "件";
-							this.maxstore = this.goodsInfo.goods_store
+							this.maxstore = this.goodsInfo.goods_store;
+							this.goods_id = this.goodsInfo.goods_id;
 						}
 					})
 			},
