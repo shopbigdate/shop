@@ -13,7 +13,6 @@ import java.util.List;
 
 import com.qrsx.springboot.pojo.OrderDetail;
 import com.qrsx.springboot.pojo.OrderList;
-import com.qrsx.springboot.pojo.UserInfo;
 
 /**  
 * <p>Title: OrderListSettlementService</p>  
@@ -27,4 +26,7 @@ public interface OrderListSettlementService {
 
 	//用户id获取详细用户信息
 	List<OrderList> user_iddetial(Integer user_id);
+	
+	//购物车id清空已选商品
+	void shoppingcardeleteselected(Integer shopping_car_id);
 }

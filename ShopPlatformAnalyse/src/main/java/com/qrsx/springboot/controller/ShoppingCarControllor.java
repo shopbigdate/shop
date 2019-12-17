@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qrsx.springboot.pojo.ShoppingCar;
@@ -75,16 +74,12 @@ public class ShoppingCarControllor {
 	 */
 	@RequestMapping(value = "/getAllShoppingCarInfo", method = RequestMethod.POST)
 	public List<ShoppingCar> getAllShoppingCarInfo() {
-
-		System.out.print("getAllShoppingCarInfo");
 		HttpSession session = request.getSession();
 		UserInfo us = (UserInfo) session.getAttribute("UserInfo");
 		if (us == null) {
-			System.out.print("空值");
 			return null;
 		} else {
-			Integer id = us.getUserId();
-			return shoppingCarService.getAllShoppingCarInfo(id);
+			return shoppingCarService.getAllShoppingCarInfo(us.getUserId());
 		}
 	}
 

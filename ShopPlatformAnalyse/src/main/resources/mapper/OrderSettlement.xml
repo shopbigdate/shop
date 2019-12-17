@@ -19,4 +19,9 @@
 		user_info us,order_info os where
 		us.user_id=os.user_id and us.user_id=#{user_id};
 	</select>
+
+	<select id="shoppingcardeleteselected" parameterType="_int" resultType="ShoppingCar">
+		UPDATE shopping_car set isshow=0 where
+		shopping_car_id=#{shopping_car_id};
+	</select>
 </mapper>

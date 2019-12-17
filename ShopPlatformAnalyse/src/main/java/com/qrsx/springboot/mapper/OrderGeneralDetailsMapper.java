@@ -15,7 +15,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.qrsx.springboot.pojo.OrderDetail;
 import com.qrsx.springboot.pojo.OrderList;
-import com.qrsx.springboot.pojo.UserInfo;
 
 /**  
 * <p>Title: OrderGeneralDetailsMapper</p>  
@@ -33,4 +32,7 @@ public interface OrderGeneralDetailsMapper {
 
 	//用户id获取用户信息
 	List<OrderList> user_iddetial(Integer user_id);
+
+	//购物车id清空已选商品
+	void shoppingcardeleteselected(Integer shopping_car_id);
 }

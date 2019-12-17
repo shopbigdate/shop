@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 import com.qrsx.springboot.mapper.OrderGeneralDetailsMapper;
 import com.qrsx.springboot.pojo.OrderDetail;
 import com.qrsx.springboot.pojo.OrderList;
-import com.qrsx.springboot.pojo.UserInfo;
 import com.qrsx.springboot.service.OrderListSettlementService;
 
 /**  
@@ -53,6 +52,17 @@ public class OrderListSettlementServiceImpl implements OrderListSettlementServic
 	@Override
 	public List<OrderList> user_iddetial(Integer user_id) {
 		return orderGeneralDetailsMapper.user_iddetial(user_id);
+	}
+
+	/* (non-Javadoc)  
+	 * <p>Title: shoppingcardeleteselected</p>  
+	 * <p>Description: </p>  
+	 * @param shopping_car_id  
+	 * @see com.qrsx.springboot.service.OrderListSettlementService#shoppingcardeleteselected(java.lang.Integer)  
+	 */
+	@Override
+	public void shoppingcardeleteselected(Integer shopping_car_id) {
+		orderGeneralDetailsMapper.shoppingcardeleteselected(shopping_car_id);
 	}
 
 }
