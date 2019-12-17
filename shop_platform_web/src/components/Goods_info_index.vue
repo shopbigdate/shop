@@ -16,7 +16,8 @@
 				</ul>
 				<ul class="fr ">
 					<li>
-						<router-link to="/login">{{loginInfo}}</router-link>
+						{{loginInfo}}
+						<a v-on:click="loginAndOut()" style="cursor:pointer">{{loginStatus}}</a>
 						<router-link to="/register" class="f10">免费注册</router-link>
 					</li>
 					<li class="space"></li>
@@ -407,17 +408,19 @@
 				currentPage: 1,
 				pagesize: 4,
 				str: "",
-				loginInfo : "您好，请登录"
+				loginInfo: "",
+				loginStatus: "你好，请登录"
 			}
 		},
 		mounted: function() {
 			this.searchall();
 			this.getParams();
+			this.getSession();
 			var self = this;
 			var url = 'http://localhost:8888/goods/getUserName';
 			axios.post(url).then(function(response) {
-					self.loginInfo = response.data;
-				})
+				self.loginInfo = response.data;
+			})
 		},
 		methods: {
 			handleSizeChange: function(size) {
@@ -453,6 +456,30 @@
 			// 表格样式设置
 			rowClass() {
 				return 'text-align: center;'
+			},
+			getSession() {
+				var url = "http://localhost:8888/goods/getUserSession/";
+				this.$axios.get(url)
+					.then(response => {
+						var userInfo = response.data;
+						if(userInfo != "") {
+							this.loginStatus = "退出登录"
+						}
+					})
+			},
+			loginAndOut() {
+				if(this.loginStatus == "你好，请登录") {
+					this.$router.push({
+						path: '/login'
+					});
+				} else {
+					this.$axios.get("http://localhost:8888/user/loginout/")
+						.then(response => {
+							this.$router.push({
+								path: '/login'
+							});
+						})
+				}
 			}
 		}
 	}

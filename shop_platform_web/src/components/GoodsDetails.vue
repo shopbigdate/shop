@@ -6,12 +6,14 @@
 				<ul class="welcome">
 					<li>欢迎进入 京东</li>
 					<li>
-						<router-link to="/login">{{loginInfo}}</router-link>
+						&nbsp;&nbsp;&nbsp;{{loginInfo}}
+						<a v-on:click="loginAndOut()" style="cursor:pointer">{{loginStatus}}</a>
 						<router-link to="/register" class="f10">免费注册</router-link>
 					</li>
 				</ul>
 				<ul class="data">
-					<li>我的订单</li>
+					<li>
+						<router-link to="/order">我的订单</router-link>
 					<li>
 						<a href="#">我的信息</a>
 						<ul class="info">
@@ -502,17 +504,19 @@
 				goodspicture: [],
 				store: "",
 				goods_id: 0,
-				user_id: 1,
+				/*user_id: 1,*/
 				result: 0,
 				maxstore: 0,
 				str: "",
-				loginInfo : "您好，请登录"
+				loginInfo: "",
+				loginStatus: "请登录"
 			}
 		},
 
 		mounted: function() {
 			this.getGoodsInfo();
 			this.getGoodsPicture();
+			this.getSession();
 		},
 
 		created: function() {
@@ -520,8 +524,8 @@
 			var self = this;
 			var url = 'http://localhost:8888/goods/getUserName';
 			axios.post(url).then(function(response) {
-					self.loginInfo = response.data;
-				})
+				self.loginInfo = response.data;
+			})
 		},
 
 		methods: {
@@ -591,46 +595,65 @@
 					})
 					.then(response => {
 						this.goodspicture = response.data;
-
 					})
 			},
 
 			createclickNumber() {
-				{
-					var url = "http://localhost:8888/goods/getUserId/";
-					this.$axios.get(url)
+				var url = "http://localhost:8888/goods/getUserSession/";
+				this.$axios.get(url)
+					.then(response => {
+						var userInfo = response.data;
+						if(userInfo == "") {
+							alert("请先登录")
+						} else {
+							var url = "http://localhost:8888/goods/createShoppingCar/";
+							this.$axios.post(url, JSON.stringify({
+									goods_id: this.goods_id,
+									user_id: userInfo.userId,
+									goods_number: this.clickNumber,
+								}), {
+									headers: {
+										'Content-Type': 'application/json;charset=UTF-8'
+									}
+								})
+								.then(response => {
+									this.result = response.data;
+									if(this.result == 0) {
+										alert("加入失败")
+									} else {
+										alert("加入成功")
+									}
+								})
+						}
+					})
+			},
+			
+			getSession() {
+				var url = "http://localhost:8888/goods/getUserSession/";
+				this.$axios.get(url)
+					.then(response => {
+						var userInfo = response.data;
+						if(userInfo != "") {
+							this.loginStatus = "退出登录"
+						}
+					})
+			},
+			
+			loginAndOut() {
+				if(this.loginStatus == "你好，请登录") {
+					this.$router.push({
+						path: '/login'
+					});
+				} else {
+					this.$axios.get("http://localhost:8888/user/loginout/")
 						.then(response => {
-							this.user_id = response.data;
-							if(this.user_id == 0) {
-								alert("请先登录")
-							} else {
-								var url = "http://localhost:8888/goods/createShoppingCar/";
-								this.$axios.post(url, JSON.stringify({
-										goods_id: this.goods_id,
-										user_id: this.user_id,
-										goods_number: this.clickNumber,
-									}), {
-										headers: {
-											'Content-Type': 'application/json;charset=UTF-8'
-										}
-									})
-									.then(response => {
-										this.result = response.data;
-										if(this.result == 0) {
-											alert("加入失败")
-										} else {
-											alert("加入成功")
-										}
-									})
-							}
+							this.$router.push({
+								path: '/login'
+							});
 						})
-
 				}
-
 			}
-
 		}
-
 	}
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-	<div id = "login">
+	<div id="login">
 		<div class="first">
 			<a href=""><img alt="" src="../../static/images/logo-201305-b.png"></a>&nbsp&nbsp&nbsp&nbsp&nbsp
 			<font size="5">欢迎登录</font>
