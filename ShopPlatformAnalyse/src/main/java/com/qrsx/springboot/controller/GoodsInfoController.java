@@ -88,10 +88,9 @@ public class GoodsInfoController {
 	}
 
 	//添加购物车未登录提示
-	@RequestMapping(value = "/getUserId")
-	public Integer getUserId(HttpSession session) throws Exception {
-		UserInfo userinfo = (UserInfo) session.getAttribute("UserInfo");
-		return userinfo == null ? 0 : userinfo.getUserId();
+	@RequestMapping(value = "/getUserSession")
+	public UserInfo getUserSession(HttpSession session) throws Exception {
+		return (UserInfo) session.getAttribute("UserInfo");
 	}
 
 }

@@ -50,6 +50,12 @@ public class UserInfoController {
 		}
 		return false;
 	}
+	
+	//退出登录
+	@RequestMapping("loginout")
+	public void loginout(HttpSession session) {
+		session.setAttribute("UserInfo", null);
+	}
 
 	/**
 	    * @Description 注册方法，添加数据到数据库
