@@ -93,4 +93,10 @@ public class GoodsInfoController {
 		return (UserInfo) session.getAttribute("UserInfo");
 	}
 
+	//是否登录
+	@RequestMapping(value = "/getUserName")
+	public String getUserName(HttpSession session) throws Exception {
+		UserInfo userinfo = (UserInfo) session.getAttribute("UserInfo");
+		return userinfo == null ? "您好，请登录" : userinfo.getUserName();
+	}
 }

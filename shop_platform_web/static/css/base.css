@@ -24,7 +24,7 @@ body {min-width: 1200px;background-color: #f5f5f5}
 .header .page-top .data .info li a:hover{color:red;}
 .header .page-top .data .info .from {margin-left: -10px;}
 .header .navigtion{min-width: 1200px;}
-.header .navigtion .logo{float: left;margin-top:15px}
+.header .navigtion .logo{float: left;margin-top:-20px}
 .header .navigtion .search{float: left;margin-top:20px;margin-left:200px}
 .header .navigtion .search .sear{width: 480px;height:30px;border: 2px solid #BE1E2D;margin-right:-85px}
 .header .navigtion .search .search-jzx{width:80px;height:35px;background-color: #BE1E2D;color: #ffffff;font-size: 14px;font-weight: 600;border:0}

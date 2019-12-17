@@ -55,7 +55,8 @@ public class OrderController {
 	@RequestMapping(value = "/getOrders", method = RequestMethod.POST)
 	public OrderList getOrderList() {
 		HttpSession session = request.getSession();
-		return (OrderList) session.getAttribute("orderList");
+		OrderList orderList = (OrderList) session.getAttribute("orderList");
+		return orderList;
 	}
 
 	/**
@@ -75,6 +76,8 @@ public class OrderController {
 		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String orderId = new GetOrderId().getId(sdf, d, orderList.getUser_id());
 		HttpSession session = request.getSession();
+		//清空订单信息
+		session.setAttribute("orderList", new OrderList());
 		session.setAttribute("orderId", orderId);
 		orderInfo = new OrderInfo(orderId, orderList.getUser_id(), orderList.getConsignee_name(),
 				orderList.getOrder_sum(), orderList.getOrder_status(), Timestamp.valueOf(sdf2.format(d)),

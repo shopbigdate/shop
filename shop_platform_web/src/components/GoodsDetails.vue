@@ -6,7 +6,7 @@
 				<ul class="welcome">
 					<li>欢迎进入 京东</li>
 					<li>
-						<router-link to="/login">请登录</router-link>
+						<router-link to="/login">{{loginInfo}}</router-link>
 						<router-link to="/register" class="f10">免费注册</router-link>
 					</li>
 				</ul>
@@ -17,8 +17,8 @@
 						<ul class="info">
 							<li class="touxiang">
 								<img src="../../static/images/touxiang-jzx.png" title="头像" alt="对不起图片加载失败..." width="50" height="50">
-								<p>您好
-									<a href="#">请登录</a>
+								<p>
+									<a href="#">{{loginInfo}}</a>
 								</p>
 							</li>
 							<li class="from">
@@ -493,6 +493,7 @@
 </template>
 
 <script>
+	import axios from 'axios';
 	export default {
 		data() {
 			return {
@@ -504,7 +505,8 @@
 				user_id: 1,
 				result: 0,
 				maxstore: 0,
-				str: ""
+				str: "",
+				loginInfo : "您好，请登录"
 			}
 		},
 
@@ -514,7 +516,12 @@
 		},
 
 		created: function() {
-			this.goods_id = this.$route.query.goods_id
+			this.goods_id = this.$route.query.goods_id;
+			var self = this;
+			var url = 'http://localhost:8888/goods/getUserName';
+			axios.post(url).then(function(response) {
+					self.loginInfo = response.data;
+				})
 		},
 
 		methods: {

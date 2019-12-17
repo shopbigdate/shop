@@ -18,12 +18,12 @@ public interface UserInfoService {
 	 *  @Date:  下午 7:35
 	 *  @Description: 方法：添加用户信息
 	 */
-	public Integer insertUser(UserInfo userInfo);
+	Integer insertUser(UserInfo userInfo);
 
 	/**
 	 *  @author: Yuyang Lu
 	 *  @Date:  下午 7:37
 	 *  @Description: 方法：查找用户名
 	 */
-	public String selectUser(String userName);
+	String selectUser(String userName);
 }

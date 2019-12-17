@@ -11,7 +11,7 @@ package com.qrsx.springboot.pojo;
 
 /**  
 * <p>Title: OrderDetail</p>  
-* <p>Description:订单详情表的pojo类，和数据库对应 </p>  
+* <p>Description:订单详情表的pojo类 </p>  
 * @author llx  
 * @date 2019年12月9日  
 */
@@ -26,6 +26,8 @@ public class OrderDetail {
 	private Double goods_sum;
 	//商品名称
 	private String goods_name;
+	//商品单价
+	private Double goods_price;
 
 	public String getOrder_id() {
 		return order_id;
@@ -65,6 +67,14 @@ public class OrderDetail {
 
 	public void setGoods_name(String goods_name) {
 		this.goods_name = goods_name;
+	}
+	
+	public Double getGoods_price() {
+		return goods_price;
+	}
+
+	public void setGoods_price(Double goods_price) {
+		this.goods_price = goods_price;
 	}
 
 	@Override

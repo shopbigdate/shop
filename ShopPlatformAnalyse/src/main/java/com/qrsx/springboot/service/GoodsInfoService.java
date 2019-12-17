@@ -23,8 +23,8 @@ public interface GoodsInfoService {
 	Integer createShoppingCar(ShoppingCar shoppingcar);
 
 	//主页搜索vague
-	public List<GoodsInfo> vague(String goods_name);
+	List<GoodsInfo> vague(String goods_name);
 	//全部查找
-	public List<GoodsInfo> search();
+	List<GoodsInfo> search();
 
 }

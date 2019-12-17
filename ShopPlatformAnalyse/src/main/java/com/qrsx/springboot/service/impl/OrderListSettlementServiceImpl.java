@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import com.qrsx.springboot.mapper.OrderGeneralDetailsMapper;
 import com.qrsx.springboot.pojo.OrderDetail;
+import com.qrsx.springboot.pojo.OrderList;
 import com.qrsx.springboot.pojo.UserInfo;
 import com.qrsx.springboot.service.OrderListSettlementService;
 
@@ -50,7 +51,7 @@ public class OrderListSettlementServiceImpl implements OrderListSettlementServic
 	 * @see com.qrsx.springboot.service.OrderListSettlementService#user_iddetial(java.lang.Integer)  
 	 */
 	@Override
-	public List<UserInfo> user_iddetial(Integer user_id) {
+	public List<OrderList> user_iddetial(Integer user_id) {
 		return orderGeneralDetailsMapper.user_iddetial(user_id);
 	}
 
