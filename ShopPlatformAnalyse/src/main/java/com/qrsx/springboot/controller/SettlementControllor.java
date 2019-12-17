@@ -74,11 +74,11 @@ public class SettlementControllor {
 	public OrderList shoppingcar_orderdetial(@RequestBody OrderList orderList) {
 		HttpSession session = request.getSession();
 		UserInfo us = (UserInfo) session.getAttribute("UserInfo");
-		List<OrderList> orderlist2=orderListSettlementService.user_iddetial(us.getUserId());
+		//List<OrderList> orderlist2=orderListSettlementService.user_iddetial(us.getUserId());
 		
 		orderList.setUser_id(us.getUserId());
 		orderList.setOrder_status("1");
-		orderList.setConsignee_name(orderlist2.get(0).getConsignee_name());
+		orderList.setConsignee_name(us.getUserName());
 		orderList.setUser_phone(us.getUserPhone());
 		orderList.setUser_address(us.getUserAddress());
 	
@@ -93,7 +93,6 @@ public class SettlementControllor {
 //		orderList.setConsignee_name(consigneename);
 //		orderList.setUser_phone(us.getUserPhone());
 //		orderList.setUser_address(us.getUserAddress());
-
         session.setAttribute("orderList", orderList);
 
 		return orderList;

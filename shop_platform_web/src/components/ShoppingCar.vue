@@ -346,7 +346,7 @@ li{
 			<a href="">🏠京东首页</a>
 		</div>
 		<div class="head_second">
-			<li><router-link to="/Login">你好，请登录</router-link></li>
+			<li><router-link to="/Login">{{loginInfo}}</router-link></li>
 			<li class="head_second_li">丨</li>
 			<li><router-link to="/shopping/register">免费注册</router-link></li>
 			<li class="head_second_li">丨</li>
@@ -469,12 +469,13 @@ li{
 	</div>
 	
 	<div class="third">
-		<!--<div class="selementcar">
+		<div class="selementcar">
 					金额总计:{{sum}}
 					商品数量:{{count}}
-		</div>-->
+		</div>
+		<router-link to="/Order">
 		<input class="body_div_2_a_4" type="button" value="" @click="Settlement"></input>	
-
+		</router-link>
 		<hr class="third_hr_1">
 		<ul class="third_ul_1">
 			<li><a href="">关于我们</a></li>
@@ -497,6 +498,7 @@ li{
 
 
 <script>
+	import axios from 'axios';
 	export default {
     name: 'ShoppingCar',
     data() {
@@ -510,12 +512,17 @@ li{
       		        infoList:[],
 					checkItem:[],
 					checkAll:false,
-					maxstore: 0
-
+					maxstore: 0,
+					loginInfo: "您好，请登录"
       }
     },
     mounted:function(){
     	this.searchshoppingcar();
+    	var self = this;
+		var url = 'http://localhost:8888/goods/getUserName';
+		axios.post(url).then(function(response) {
+					self.loginInfo = response.data;
+				})
     },
     methods: {
     	del:function(index){
@@ -628,7 +635,6 @@ li{
 							}
 						}
 						this.input.order_sum = total
-						//alert(this.input.order_sum)
 						return total	
 					},
 					count:function(){

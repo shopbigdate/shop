@@ -23,8 +23,8 @@ import com.qrsx.springboot.pojo.UserInfo;
 */
 public interface OrderListSettlementService {
 	//购物车商品
-	public List<OrderDetail> search();
+	List<OrderDetail> search();
 
 	//用户id获取详细用户信息
-	public List<OrderList> user_iddetial(Integer user_id);
+	List<OrderList> user_iddetial(Integer user_id);
 }

@@ -16,7 +16,7 @@
 				</ul>
 				<ul class="fr ">
 					<li>
-						<router-link to="/login">你好，请登录</router-link>
+						<router-link to="/login">{{loginInfo}}</router-link>
 						<router-link to="/register" class="f10">免费注册</router-link>
 					</li>
 					<li class="space"></li>
@@ -406,12 +406,18 @@
 				cur: 0,
 				currentPage: 1,
 				pagesize: 4,
-				str: ""
+				str: "",
+				loginInfo : "您好，请登录"
 			}
 		},
 		mounted: function() {
 			this.searchall();
 			this.getParams();
+			var self = this;
+			var url = 'http://localhost:8888/goods/getUserName';
+			axios.post(url).then(function(response) {
+					self.loginInfo = response.data;
+				})
 		},
 		methods: {
 			handleSizeChange: function(size) {

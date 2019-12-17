@@ -21,9 +21,9 @@ import com.qrsx.springboot.pojo.ShoppingCar;
 */
 
 public interface ShoppingCarService {
-	public List<ShoppingCar> search();
+	List<ShoppingCar> search();
 
-	public List<ShoppingCar> getAllShoppingCarInfo(Integer user_id);
+	List<ShoppingCar> getAllShoppingCarInfo(Integer user_id);
 
-	public void deletegoods_id(Integer goods_id);
+	void deletegoods_id(Integer goods_id);
 }
