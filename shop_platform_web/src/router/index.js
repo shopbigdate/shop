@@ -4,7 +4,7 @@ import Goods_info_index from '@/components/Goods_info_index'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
 import GoodDetails from '@/components/GoodsDetails'
-import ORDER from '@/components/Order'
+import Order from '@/components/Order'
 import ShoppingCar from '@/components/ShoppingCar'
 
 Vue.use(Router)
@@ -31,9 +31,9 @@ export default new Router({
 			component: GoodDetails
 		},
 		{
-			path: '/Order',
-			name: 'Order',
-			component: ORDER
+			path: '/order',
+			name: 'order',
+			component: Order
 		},
 		{
 			path: '/shoppingCar',

@@ -271,6 +271,23 @@
 				//self.searchshoppingcar();
 			},
 
+			DeleteSelected() {
+				for(var i = 0; i < this.checkItem.length; i++) {
+					var self = this
+					let formData = JSON.stringify({
+						shopping_car_id: this.checkItem[i]
+					});
+					var url = "http://localhost:8888/SettlementControllor/Delete_Selected";
+					self.$axios.post(url, formData, {
+						headers: {
+							'Content-Type': 'application/json;charset=UTF-8'
+						}
+					}).then(function(response) {
+						console.log(response);
+					});
+				}
+			},
+
 			Settlement() {
 				var self = this
 				let formData = JSON.stringify(self.input);
@@ -281,8 +298,8 @@
 					}
 				}).then(function(response) {
 					console.log(response);
-				})
-
+				});
+				self.DeleteSelected();
 			},
 
 			searchshoppingcar: function() {
