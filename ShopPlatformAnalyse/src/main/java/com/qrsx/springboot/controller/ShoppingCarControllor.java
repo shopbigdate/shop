@@ -71,7 +71,6 @@ public class ShoppingCarControllor {
 	 * @param shoppingCar
 	 */
 	@RequestMapping(value = "/deletegoods_id", method = RequestMethod.POST)
-	//List<OrderDetail>
 	public void object(@RequestBody ShoppingCar shoppingCar) {
 		shoppingCar.getGoods_id();
 		shoppingCarService.deletegoods_id(shoppingCar.getGoods_id());

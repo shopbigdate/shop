@@ -12,8 +12,10 @@
 
 	<select id="getAllShoppingCarInfo" resultType="ShoppingCar">
 		select
-		sh.shopping_car_id,gs.goods_id,gs.goods_name,gs.goods_price,sh.goods_number,sh.isbuy,sh.isshow from goods_info
-		gs,shopping_car sh,user_info us where gs.goods_id=sh.goods_id and sh.isshow=1 and sh.user_id=#{user_id}
+		sh.shopping_car_id,sh.goods_number,sh.isbuy,sh.isshow,
+		gs.goods_id,gs.goods_name,gs.goods_price
+		from goods_info gs,shopping_car sh
+		where gs.goods_id=sh.goods_id and sh.isshow=1 and sh.user_id=1;
 	</select>
 
 	<select id="deletegoods_id" parameterType="_int" resultType="ShoppingCar">

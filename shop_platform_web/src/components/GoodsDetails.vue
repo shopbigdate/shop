@@ -589,24 +589,37 @@
 			},
 
 			createclickNumber() {
-				var url = "http://localhost:8888/goods/createShoppingCar/";
-				this.$axios.post(url, JSON.stringify({
-						goods_id: this.goods_id,
-						user_id: this.user_id,
-						goods_number: this.clickNumber,
-					}), {
-						headers: {
-							'Content-Type': 'application/json;charset=UTF-8'
-						}
-					})
-					.then(response => {
-						this.result = response.data;
-						if(this.result == 0) {
-							alert("加入失败")
-						} else {
-							alert("加入成功")
-						}
-					})
+				{
+					var url = "http://localhost:8888/goods/getUserId/";
+					this.$axios.get(url)
+						.then(response => {
+							this.user_id = response.data;
+							if(this.user_id == 0) {
+								alert("请先登录")
+							} else {
+								var url = "http://localhost:8888/goods/createShoppingCar/";
+								this.$axios.post(url, JSON.stringify({
+										goods_id: this.goods_id,
+										user_id: this.user_id,
+										goods_number: this.clickNumber,
+									}), {
+										headers: {
+											'Content-Type': 'application/json;charset=UTF-8'
+										}
+									})
+									.then(response => {
+										this.result = response.data;
+										if(this.result == 0) {
+											alert("加入失败")
+										} else {
+											alert("加入成功")
+										}
+									})
+							}
+						})
+
+				}
+
 			}
 
 		}

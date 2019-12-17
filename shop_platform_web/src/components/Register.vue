@@ -7,7 +7,7 @@
 			</div>
 			<!-- 已有账号 -->
 			<p>已有账号？
-				<router-link to="/Login">请登录</router-link>
+				<router-link to="/login">请登录</router-link>
 			</p>
 		</div>
 

@@ -2,6 +2,8 @@ package com.qrsx.springboot.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.qrsx.springboot.pojo.GoodsInfo;
 import com.qrsx.springboot.pojo.GoodsPicture;
 import com.qrsx.springboot.pojo.ShoppingCar;
+import com.qrsx.springboot.pojo.UserInfo;
 import com.qrsx.springboot.service.GoodsInfoService;
 
 /**
@@ -82,6 +85,13 @@ public class GoodsInfoController {
 	@RequestMapping(value = "/createShoppingCar", method = RequestMethod.POST)
 	public Integer createShoppingCar(@RequestBody ShoppingCar shopping_car) throws Exception {
 		return goodsInfoService.createShoppingCar(shopping_car);
+	}
+
+	//添加购物车未登录提示
+	@RequestMapping(value = "/getUserId")
+	public Integer getUserId(HttpSession session) throws Exception {
+		UserInfo userinfo = (UserInfo) session.getAttribute("UserInfo");
+		return userinfo == null ? 0 : userinfo.getUserId();
 	}
 
 }

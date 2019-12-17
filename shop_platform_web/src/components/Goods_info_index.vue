@@ -16,7 +16,7 @@
 				</ul>
 				<ul class="fr ">
 					<li>
-						<router-link to="/Login">你好，请登录</router-link>
+						<router-link to="/login">你好，请登录</router-link>
 						<router-link to="/register" class="f10">免费注册</router-link>
 					</li>
 					<li class="space"></li>
