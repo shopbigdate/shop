@@ -14,6 +14,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.qrsx.springboot.pojo.OrderDetail;
+import com.qrsx.springboot.pojo.OrderList;
 import com.qrsx.springboot.pojo.UserInfo;
 
 /**  
@@ -31,5 +32,5 @@ public interface OrderGeneralDetailsMapper {
 	public List<OrderDetail> detial(Double gn);
 
 	//用户id获取用户信息
-	public List<UserInfo> user_iddetial(Integer user_id);
+	public List<OrderList> user_iddetial(Integer user_id);
 }

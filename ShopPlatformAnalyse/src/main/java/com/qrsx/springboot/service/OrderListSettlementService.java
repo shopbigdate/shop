@@ -12,6 +12,7 @@ package com.qrsx.springboot.service;
 import java.util.List;
 
 import com.qrsx.springboot.pojo.OrderDetail;
+import com.qrsx.springboot.pojo.OrderList;
 import com.qrsx.springboot.pojo.UserInfo;
 
 /**  
@@ -25,5 +26,5 @@ public interface OrderListSettlementService {
 	public List<OrderDetail> search();
 
 	//用户id获取详细用户信息
-	public List<UserInfo> user_iddetial(Integer user_id);
+	public List<OrderList> user_iddetial(Integer user_id);
 }
