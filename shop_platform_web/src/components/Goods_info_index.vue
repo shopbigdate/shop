@@ -21,7 +21,7 @@
 					</li>
 					<li class="space"></li>
 					<li>
-						<router-link to="/vuser">我的订单</router-link>
+						<router-link to="/order">我的订单</router-link>
 					</li>
 					<li class="space"></li>
 					<li>
@@ -66,8 +66,7 @@
 			</div>
 			<!-- 我的购物车 -->
 			<div class="shopCar">
-
-				<router-link to="/shopping_car"><i class="f10"></i>我的购物车<span>0</span></router-link>
+				<router-link to="/shoppingCar"><i class="f10"></i>我的购物车<span>0</span></router-link>
 			</div>
 			<!-- 关键词 -->
 

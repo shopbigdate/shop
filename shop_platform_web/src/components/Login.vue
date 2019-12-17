@@ -13,7 +13,7 @@
 					<div class="second_first_first_second">
 						<font size=4>
 							<a href="">扫码登录</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp丨&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-							<a href="">账户登录</a>
+							<router-link to="/login">账户登录</router-link>
 						</font>
 					</div>
 					<div class="second_first_first_third">

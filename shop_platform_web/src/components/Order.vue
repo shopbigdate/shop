@@ -299,8 +299,7 @@
 						<input type="hidden" id="couponType" name="Checkout[couponsType]">
 						<input type="hidden" id="couponValue" name="Checkout[couponsValue]">
 						<div class="checkout-confirm">
-
-							<a href="E:\JD103code\eclipse-workspace\webjob01\WebContent\WEB-INF\shoppingcar.html" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
+							<router-link to="/shoppingCar" class="btn btn-lineDakeLight btn-back-cart">返回购物车</router-link>
 							<el-button type="text" class="btn btn-primary" id="checkoutToPay" @click="payfor">立即下单</el-button>
 						</div>
 					</div>
@@ -535,8 +534,8 @@
 			payfor: function() {
 				var self = this;
 				let formData = JSON.stringify(self.input)
-				var url = "http://localhost:8080/orders";
-				var url2 = "http://localhost:8080/updateOrders";
+				var url = "http://localhost:8888/orders";
+				var url2 = "http://localhost:8888/updateOrders";
 				axios.post(url, formData, {
 					headers: {
 						'Content-Type': 'application/json;charset=UTF-8'
@@ -566,11 +565,8 @@
 						message: '支付失败!'
 					});
 				});
-
 			}
-
 		}
-
 	}
 </script>
 <style scoped>

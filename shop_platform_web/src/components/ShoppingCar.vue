@@ -6,15 +6,15 @@
 			</div>
 			<div class="head_second">
 				<li>
-					<a href="login.html">您好，请登录</a>
+					<router-link to="/login">你好，请登录</router-link>
 				</li>
 				<li class="head_second_li">丨</li>
 				<li>
-					<a href="register.html">免费注册</a>
+					<router-link to="/register" class="f10">免费注册</router-link>
 				</li>
 				<li class="head_second_li">丨</li>
 				<li>
-					<a href="order.html">我的订单</a>
+					<router-link to="/order">我的订单</router-link>
 				</li>
 				<li class="head_second_li">丨</li>
 				<li class="head_second_li_1">

@@ -6,8 +6,8 @@
 				<ul class="welcome">
 					<li>欢迎进入 京东</li>
 					<li>
-						<a href="#">请登录</a>
-						<a href="#">免费注册</a>
+						<router-link to="/login">请登录</router-link>
+						<router-link to="/register" class="f10">免费注册</router-link>
 					</li>
 				</ul>
 				<ul class="data">
