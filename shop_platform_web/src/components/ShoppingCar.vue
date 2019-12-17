@@ -426,7 +426,7 @@
 		}
 	}
 </script>
-<style type="text/css">
+<style scoped>
 	li {
 		overflow: hidden;
 		float: left;
