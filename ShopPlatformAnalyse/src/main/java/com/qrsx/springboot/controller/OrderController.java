@@ -110,7 +110,7 @@ public class OrderController {
 		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String id = (String) request.getSession().getAttribute("orderId");
 		orderInfo = new OrderInfo(id, orderList.getUser_id(), orderList.getConsignee_name(), orderList.getOrder_sum(),
-				"2", Timestamp.valueOf(sdf2.format(d)), Timestamp.valueOf(sdf2.format(d)));
+				orderList.getOrder_status(), Timestamp.valueOf(sdf2.format(d)), Timestamp.valueOf(sdf2.format(d)));
 		orderService.updateOrderInfo(orderInfo);
 	}
 
