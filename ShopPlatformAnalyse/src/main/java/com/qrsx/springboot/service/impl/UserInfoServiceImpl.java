@@ -1,5 +1,7 @@
 package com.qrsx.springboot.service.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +23,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 	@Autowired
 	private UserInfoMapper userInfoMapper;
 
-	//private static final Logger log = LoggerFactory.getLogger(UserInfoServiceImpl.class);
+	private static final Logger log = LoggerFactory.getLogger(UserInfoServiceImpl.class);
 
 	//登录，验证用户名和密码，并当活跃状态为0时，修改活跃状态为1。
 	@Override

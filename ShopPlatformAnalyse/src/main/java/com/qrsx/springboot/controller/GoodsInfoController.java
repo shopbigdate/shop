@@ -93,7 +93,7 @@ public class GoodsInfoController {
 		return (UserInfo) session.getAttribute("UserInfo");
 	}
 
-	//是否登录
+	//若已登录显示用户名
 	@RequestMapping(value = "/getUserName")
 	public String getUserName(HttpSession session) throws Exception {
 		UserInfo userinfo = (UserInfo) session.getAttribute("UserInfo");
