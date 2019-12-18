@@ -239,7 +239,8 @@
 				checkAll: false,
 				maxstore: 0,
 				loginInfo: "",
-				loginStatus: "您好，请登录"
+				loginStatus: "您好，请登录",
+				userId:""
 			}
 		},
 
@@ -381,18 +382,19 @@
 					.then(response => {
 						var userInfo = response.data;
 						if(userInfo != "") {
-							this.loginStatus = "退出登录"
+							this.loginStatus = "退出登录";
+							this.userId = userInfo.userId;
 						}
 					})
 			},
-
+			
 			loginAndOut() {
-				if(this.loginStatus == "您好，请登录") {
+				if(this.loginStatus == "你好，请登录") {
 					this.$router.push({
 						path: '/login'
 					});
 				} else {
-					this.$axios.get("http://localhost:8888/user/loginout/")
+					this.$axios.get("http://localhost:8888/user/logout/?userId=" + this.userId)
 						.then(response => {
 							this.$router.push({
 								path: '/login'

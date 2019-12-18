@@ -409,7 +409,8 @@
 				pagesize: 4,
 				str: "",
 				loginInfo: "",
-				loginStatus: "你好，请登录"
+				loginStatus: "你好，请登录",
+				userId:""
 			}
 		},
 		mounted: function() {
@@ -457,23 +458,26 @@
 			rowClass() {
 				return 'text-align: center;'
 			},
+			
 			getSession() {
 				var url = "http://localhost:8888/goods/getUserSession/";
 				this.$axios.get(url)
 					.then(response => {
 						var userInfo = response.data;
 						if(userInfo != "") {
-							this.loginStatus = "退出登录"
+							this.loginStatus = "退出登录";
+							this.userId = userInfo.userId;
 						}
 					})
 			},
+			
 			loginAndOut() {
 				if(this.loginStatus == "你好，请登录") {
 					this.$router.push({
 						path: '/login'
 					});
 				} else {
-					this.$axios.get("http://localhost:8888/user/loginout/")
+					this.$axios.get("http://localhost:8888/user/logout/?userId=" + this.userId)
 						.then(response => {
 							this.$router.push({
 								path: '/login'
