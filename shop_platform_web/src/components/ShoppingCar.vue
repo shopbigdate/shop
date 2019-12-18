@@ -452,7 +452,7 @@
 	}
 	
 	.head_second {
-		padding-left: 600px;
+		padding-left: 500px;
 		font-size: 12px;
 		color: #F2F2F2;
 	}
