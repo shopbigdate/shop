@@ -15,8 +15,15 @@ import com.qrsx.springboot.pojo.UserInfo;
 public interface UserInfoMapper {
 	//登录，验证用户名和密码，并修改状态
 	UserInfo checkPassword(UserInfo userInfo);
-
-	int updateStatus(int userId);
+	
+	//退出登录，修改登录状态为0。
+	void logOut(Integer userId);
+	
+	//修改登录状态为1
+	int updateLoginStatus1(int userId);
+	
+	//修改活跃状态为1
+	int updateActiveStatus1(int userId);
 
 	/**
 	 *  @author: Yuyang Lu

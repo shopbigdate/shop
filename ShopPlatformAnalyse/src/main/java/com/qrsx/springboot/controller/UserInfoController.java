@@ -5,8 +5,6 @@ import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,8 +29,6 @@ public class UserInfoController {
 	@Autowired
 	private UserInfoService userInfoService;
 
-	private static final Logger log = LoggerFactory.getLogger(UserInfoService.class);
-
 	//登录
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public Boolean login(@RequestBody UserInfo userInfo, HttpSession session) {
@@ -49,7 +45,6 @@ public class UserInfoController {
 		//验证用户名和密码，并当活跃状态为0时，修改活跃状态为1。
 		UserInfo userInfo1 = userInfoService.userLogin(userInfo);
 		//写入log4j日志
-		log.warn(userInfo1.getUserId() + "," + userInfo1.getUserName() + ",1");
 		if (userInfo1 != null) {
 			session.setAttribute("UserInfo", userInfo1);
 			return true;
@@ -57,9 +52,10 @@ public class UserInfoController {
 		return false;
 	}
 
-	//退出登录
-	@RequestMapping("loginout")
-	public void loginout(HttpSession session) {
+	//退出登录，修改登录状态为0。
+	@RequestMapping("logout")
+	public void loginout(HttpSession session,Integer userId) {
+		userInfoService.logOut(userId);
 		session.setAttribute("UserInfo", null);
 	}
 

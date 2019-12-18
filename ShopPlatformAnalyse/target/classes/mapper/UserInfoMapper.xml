@@ -20,8 +20,18 @@
 		user_password = #{userPassword}
 	</select>
 
-	<update id="updateStatus" parameterType="Integer">
-		update user_info set login_status = 1, active_status = 1 where user_id =
+	<update id="logOut" parameterType="Integer">
+		update user_info set login_status = 0 where user_id =
+		#{userId}
+	</update>
+
+	<update id="updateLoginStatus1" parameterType="Integer">
+		update user_info set login_status = 1 where user_id =
+		#{userId}
+	</update>
+
+	<update id="updateActiveStatus1" parameterType="Integer">
+		update user_info set active_status = 1 where user_id =
 		#{userId}
 	</update>
 

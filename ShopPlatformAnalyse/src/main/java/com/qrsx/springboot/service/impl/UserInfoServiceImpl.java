@@ -31,11 +31,21 @@ public class UserInfoServiceImpl implements UserInfoService {
 	@Transactional
 	public UserInfo userLogin(UserInfo userInfo) {
 		UserInfo userInfo1 = userInfoMapper.checkPassword(userInfo);
-		if (userInfo1 != null && userInfo1.getActiveStatus().equals("0")) {
-			userInfoMapper.updateStatus(userInfo1.getUserId());
-			//log.warn(userInfo1.getUserId() + " " + userInfo1.getUserName() + " 1");
+
+		if (userInfo1 != null) {
+			userInfoMapper.updateLoginStatus1(userInfo1.getUserId());
+			if (userInfo1.getActiveStatus().equals("0")) {
+				userInfoMapper.updateActiveStatus1(userInfo1.getUserId());
+				log.warn(userInfo1.getUserId() + "," + userInfo1.getUserName() + ",1");
+			}
 		}
 		return userInfo1;
+	}
+
+	//退出登录，修改登录状态为0。
+	@Override
+	public void logOut(Integer userId) {
+		userInfoMapper.logOut(userId);
 	}
 
 	@Override
@@ -47,4 +57,5 @@ public class UserInfoServiceImpl implements UserInfoService {
 	public String selectUser(String userName) {
 		return userInfoMapper.selectUser(userName);
 	}
+
 }
