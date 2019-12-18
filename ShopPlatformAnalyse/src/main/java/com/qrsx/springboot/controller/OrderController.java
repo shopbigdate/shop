@@ -77,7 +77,7 @@ public class OrderController {
 		String orderId = new GetOrderId().getId(sdf, d, orderList.getUser_id());
 		HttpSession session = request.getSession();
 		//清空订单信息
-		session.setAttribute("orderList", new OrderList());
+		session.setAttribute("orderList", null);
 		session.setAttribute("orderId", orderId);
 		orderInfo = new OrderInfo(orderId, orderList.getUser_id(), orderList.getConsignee_name(),
 				orderList.getOrder_sum(), orderList.getOrder_status(), Timestamp.valueOf(sdf2.format(d)),

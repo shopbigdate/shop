@@ -36,10 +36,10 @@
 					<div class="second_first_first_forth">
 						&nbsp&nbsp
 						<label for="QQ" class="label_qq"></label>
-						<a href="" name="QQ" class="QQ">&nbsp&nbsp&nbsp&nbsp&nbspQQ</a>
+						<a href="" name="QQ" class="QQ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QQ</a>
 						丨&nbsp
 						<label for="weixin" class="label_weixin"></label>
-						<a href="" name="weixin" class="weixin">&nbsp&nbsp&nbsp&nbsp&nbsp微信</a>
+						<a href="" name="weixin" class="weixin">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;微信</a>
 						<router-link to="/register" style="float:right">
 							<label class="zhuce"></label>&nbsp&nbsp&nbsp&nbsp立即注册&nbsp&nbsp&nbsp&nbsp
 						</router-link>
