@@ -44,7 +44,6 @@ public class UserInfoController {
 		userInfo.setUserPassword(pass);
 		//验证用户名和密码，并当活跃状态为0时，修改活跃状态为1。
 		UserInfo userInfo1 = userInfoService.userLogin(userInfo);
-		//写入log4j日志
 		if (userInfo1 != null) {
 			session.setAttribute("UserInfo", userInfo1);
 			return true;

@@ -15,9 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qrsx.springboot.mapper.OrderGeneralDetailsMapper;
-import com.qrsx.springboot.pojo.OrderDetail;
 import com.qrsx.springboot.pojo.OrderList;
-import com.qrsx.springboot.pojo.UserInfo;
 import com.qrsx.springboot.service.OrderListSettlementService;
 
 /**  
