@@ -240,7 +240,7 @@
 				maxstore: 0,
 				loginInfo: "",
 				loginStatus: "您好，请登录",
-				userId:""
+				userId: ""
 			}
 		},
 
@@ -327,12 +327,12 @@
 					})
 					.then(response => {
 						this.maxstore = response.data.goods_store;
+						if(this.infoList[index].goods_number < this.maxstore)
+							this.infoList[index].goods_number++;
+						else if(this.infoList[index].goods_number > this.maxstore) {
+							alert("超预存,请刷新页面重新选择。");
+						}
 					});
-				if(this.infoList[index].goods_number < this.maxstore)
-					this.infoList[index].goods_number++;
-				else if(this.infoList[index].goods_number > this.maxstore) {
-					alert("超预存,请刷新页面重新选择。");
-				}
 			},
 
 			reduce: function(index) {
@@ -387,7 +387,7 @@
 						}
 					})
 			},
-			
+
 			loginAndOut() {
 				if(this.loginStatus == "你好，请登录") {
 					this.$router.push({
