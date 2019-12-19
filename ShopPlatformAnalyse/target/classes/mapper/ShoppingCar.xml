@@ -4,12 +4,6 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.qrsx.springboot.mapper.ShoppingCarMapper">
-	<select id="search" resultType="ShoppingCar">
-		select
-		sh.shopping_car_id,gs.goods_id,gs.goods_name,gs.goods_price,sh.goods_number,sh.isbuy,sh.isshow from goods_info
-		gs,shopping_car sh,user_info us where gs.goods_id=sh.goods_id and sh.isshow=1
-	</select>
-
 	<select id="getAllShoppingCarInfo" resultType="ShoppingCar">
 		select
 		sh.shopping_car_id,gs.goods_id,gs.goods_name,gs.goods_price,sh.goods_number,sh.isbuy,sh.isshow from goods_info
