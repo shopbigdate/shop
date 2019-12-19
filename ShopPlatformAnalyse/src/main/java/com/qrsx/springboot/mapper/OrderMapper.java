@@ -18,15 +18,18 @@ import com.qrsx.springboot.pojo.OrderInfo;
 
 /**  
 * <p>Title: OrderInfoMapper</p>  
-* <p>Description: </p>  
+* <p>Description:订单Dao层 </p>  
 * @author llx  
 * @date 2019年12月10日  
 */
 @Mapper
 public interface OrderMapper {
+	//插入到订单信息表
 	void addOrderInfo(OrderInfo orderInfo);
 
+	//插入到订单详情表
 	void addOrderDetail(List<OrderDetail> orderDetail);
 
+	//更新订单状态
 	void updateOrderInfo(OrderInfo orderInfo);
 }

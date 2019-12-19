@@ -82,7 +82,6 @@ public class OrderController {
 		orderInfo = new OrderInfo(orderId, orderList.getUser_id(), orderList.getConsignee_name(),
 				orderList.getOrder_sum(), orderList.getOrder_status(), Timestamp.valueOf(sdf2.format(d)),
 				Timestamp.valueOf(sdf2.format(d)));
-		orderService.addOrderInfo(orderInfo);
 
 		//orderDetail
 		int i = 0;
@@ -94,7 +93,8 @@ public class OrderController {
 			o.setGoods_sum(goods_price * o.getGoods_number());
 			i++;
 		}
-		orderService.addOrderDetail(orderList.getOrderDetail());
+		//使用事务管理，插入到订单信息表和订单详情表
+		orderService.addOrder(orderInfo, orderList.getOrderDetail());
 	}
 
 	/**
@@ -111,6 +111,7 @@ public class OrderController {
 		String id = (String) request.getSession().getAttribute("orderId");
 		orderInfo = new OrderInfo(id, orderList.getUser_id(), orderList.getConsignee_name(), orderList.getOrder_sum(),
 				orderList.getOrder_status(), Timestamp.valueOf(sdf2.format(d)), Timestamp.valueOf(sdf2.format(d)));
+		//更新订单状态
 		orderService.updateOrderInfo(orderInfo);
 	}
 

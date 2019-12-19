@@ -16,14 +16,26 @@ import com.qrsx.springboot.pojo.OrderInfo;
 
 /**  
 * <p>Title: OrderService</p>  
-* <p>Description: </p>  
+* <p>Description: 订单页面的操作</p>  
 * @author llx  
 * @date 2019年12月9日  
 */
 public interface OrderService {
-	void addOrderInfo(OrderInfo orderInfo);
 
-	void addOrderDetail(List<OrderDetail> orderDetail);
-
+	/**
+	 * <p>Title: addOrder</p>
+	 * <p>Description: 使用事务管理，插入到订单信息表和订单详情表</p>
+	 * @param orderInfo
+	 * @param orderDetail
+	 * @see com.qrsx.springboot.service.OrderService#addOrder(com.qrsx.springboot.pojo.OrderInfo, java.util.List)
+	 */
 	void updateOrderInfo(OrderInfo orderInfo);
+
+	/** (non-Javadoc)  
+	 * <p>Title: updateOrderInfo</p>  
+	 * <p>Description:更新订单状态 </p>  
+	 * @param orderInfo  
+	 * @see com.qrsx.springboot.service.OrderService#updateOrderInfo(com.qrsx.springboot.pojo.OrderInfo) 
+	 */
+	void addOrder(OrderInfo orderInfo, List<OrderDetail> orderDetail);
 }

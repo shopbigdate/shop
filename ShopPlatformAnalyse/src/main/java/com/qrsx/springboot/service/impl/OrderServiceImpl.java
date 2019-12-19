@@ -13,6 +13,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.qrsx.springboot.mapper.OrderMapper;
 import com.qrsx.springboot.pojo.OrderDetail;
@@ -21,7 +22,7 @@ import com.qrsx.springboot.service.OrderService;
 
 /**  
 * <p>Title: OrderServiceImpl</p>  
-* <p>Description: </p>  
+* <p>Description: 订单页面的操作</p>  
 * @author llx  
 * @date 2019年12月9日  
 */
@@ -30,31 +31,24 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	OrderMapper orderMapper;
 
-	/* (non-Javadoc)  
-	 * <p>Title: addOrderInfo</p>  
-	 * <p>Description: </p>  
-	 * @param orderInfo  
-	 * @see com.qrsx.springboot.service.OrderService#addOrderInfo(com.qrsx.springboot.pojo.OrderInfo) 
+	/**
+	 * <p>Title: addOrder</p>
+	 * <p>Description: 使用事务管理，插入到订单信息表和订单详情表</p>
+	 * @param orderInfo
+	 * @param orderDetail
+	 * @see com.qrsx.springboot.service.OrderService#addOrder(com.qrsx.springboot.pojo.OrderInfo, java.util.List)
 	 */
 	@Override
-	public void addOrderInfo(OrderInfo orderInfo) {
+	//加上注解@Transactional,就可以指定这个类需要受Spring的事务管理
+	@Transactional
+	public void addOrder(OrderInfo orderInfo, List<OrderDetail> orderDetail) {
 		orderMapper.addOrderInfo(orderInfo);
-	}
-
-	/* (non-Javadoc)  
-	 * <p>Title: addOrderDetail</p>  
-	 * <p>Description: </p>  
-	 * @param orderDetail  
-	 * @see com.qrsx.springboot.service.OrderService#addOrderDetail(com.qrsx.springboot.pojo.OrderDetail) 
-	 */
-	@Override
-	public void addOrderDetail(List<OrderDetail> orderDetail) {
 		orderMapper.addOrderDetail(orderDetail);
 	}
 
-	/* (non-Javadoc)  
+	/** (non-Javadoc)  
 	 * <p>Title: updateOrderInfo</p>  
-	 * <p>Description: </p>  
+	 * <p>Description:更新订单状态 </p>  
 	 * @param orderInfo  
 	 * @see com.qrsx.springboot.service.OrderService#updateOrderInfo(com.qrsx.springboot.pojo.OrderInfo) 
 	 */
