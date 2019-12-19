@@ -111,7 +111,7 @@ public class OrderController {
 		String id = (String) request.getSession().getAttribute("orderId");
 		orderInfo = new OrderInfo(id, orderList.getUser_id(), orderList.getConsignee_name(), orderList.getOrder_sum(),
 				orderList.getOrder_status(), Timestamp.valueOf(sdf2.format(d)), Timestamp.valueOf(sdf2.format(d)));
-		//更新订单状态
+		//更新订单状态，点击立即下单，订单状态为1；点击确认支付，订单状态为2；点击取消支付，订单状态为3。
 		orderService.updateOrderInfo(orderInfo);
 	}
 
