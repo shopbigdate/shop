@@ -32,4 +32,7 @@ public interface OrderMapper {
 
 	//更新订单状态
 	void updateOrderInfo(OrderInfo orderInfo);
+	
+	//获取商品信息
+	GoodsInfo selectgoods(Integer goods_id);
 }

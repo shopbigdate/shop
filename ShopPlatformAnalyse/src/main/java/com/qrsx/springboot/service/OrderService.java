@@ -38,4 +38,12 @@ public interface OrderService {
 	 * @see com.qrsx.springboot.service.OrderService#updateOrderInfo(com.qrsx.springboot.pojo.OrderInfo) 
 	 */
 	void addOrder(OrderInfo orderInfo, List<OrderDetail> orderDetail);
+	
+	/** (non-Javadoc)  
+	 * <p>Title: updateOrderInfo</p>  
+	 * <p>Description:获取商品信息的服务接口 </p>  
+	 * @param orderInfo  
+	 * @see com.qrsx.springboot.service.OrderService#updateOrderInfo(com.qrsx.springboot.pojo.OrderInfo) 
+	 */
+	GoodsInfo selectgoods(Integer goods_id);
 }

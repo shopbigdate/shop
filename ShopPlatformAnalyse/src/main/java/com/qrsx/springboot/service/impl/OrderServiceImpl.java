@@ -56,5 +56,17 @@ public class OrderServiceImpl implements OrderService {
 	public void updateOrderInfo(OrderInfo orderInfo) {
 		orderMapper.updateOrderInfo(orderInfo);
 	}
+	
+	/* (non-Javadoc)  
+	 * <p>Title: selectgoods</p>  
+	 * <p>Description: 获取商品信息</p>  
+	 * @param goods_id  
+	 * @see com.qrsx.springboot.service.OrderService#selectgoods(java.lang.Integer)  
+	 */
+	@Override
+	public GoodsInfo selectgoods(Integer goods_id) {
+		// TODO Auto-generated method stub
+		return orderMapper.selectgoods(goods_id);
+	}
 
 }

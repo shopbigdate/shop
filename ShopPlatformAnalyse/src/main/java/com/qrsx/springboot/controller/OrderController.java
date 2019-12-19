@@ -91,6 +91,9 @@ public class OrderController {
 			o.setGoods_number(orderList.getOrderDetail().get(i).getGoods_number());
 			Double goods_price = goodsInfoService.getOneGoodsInfo(o.getGoods_id()).getGoods_price();
 			o.setGoods_sum(goods_price * o.getGoods_number());
+			
+			GoodsInfo goodsinfo=orderService.selectgoods(orderList.getOrderDetail().get(i).getGoods_id());
+			log.warn(orderList.getOrderDetail().get(i).getGoods_id()+","+goodsinfo.getGoods_name()+","+goodsinfo.getGoods_category()+",1");
 			i++;
 		}
 		//使用事务管理，插入到订单信息表和订单详情表
