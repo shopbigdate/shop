@@ -43,23 +43,6 @@ public class ShoppingCarControllor {
 	ShoppingCarService shoppingCarService;
 	@Autowired
 	HttpServletRequest request;
-
-	/**
-	 * 
-	 * <p>
-	 * Title: search
-	 * </p>
-	 * <p>
-	 * Description: 购物车商品展示
-	 * </p>
-	 * 
-	 * @return
-	 */
-	@GetMapping("/searchshoppingcar")
-	public List<ShoppingCar> search() {
-		return shoppingCarService.search();
-	}
-
 	/**
 	 * 
 	 * <p>

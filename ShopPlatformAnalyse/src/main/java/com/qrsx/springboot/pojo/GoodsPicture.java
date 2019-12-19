@@ -9,8 +9,11 @@ package com.qrsx.springboot.pojo;
  *     
  */
 public class GoodsPicture {
+	//商品照片id
 	private Integer picture_id;
+	//商品id
 	private Integer goods_id;
+	//商品照片地址
 	private String picture_path;
 
 	/**  

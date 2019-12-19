@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import com.qrsx.springboot.mapper.OrderGeneralDetailsMapper;
 import com.qrsx.springboot.pojo.OrderDetail;
 import com.qrsx.springboot.pojo.OrderList;
+import com.qrsx.springboot.pojo.UserInfo;
 import com.qrsx.springboot.service.OrderListSettlementService;
 
 /**  
@@ -30,17 +31,6 @@ public class OrderListSettlementServiceImpl implements OrderListSettlementServic
 
 	@Autowired
 	OrderGeneralDetailsMapper orderGeneralDetailsMapper;
-
-	/* (non-Javadoc)  
-	 * <p>Title: search</p>  
-	 * <p>Description: 总的商品展示</p>  
-	 * @return  
-	 * @see com.qrsx.springboot.service.OrderListSettlementService#search()  
-	 */
-	@Override
-	public List<OrderDetail> search() {
-		return orderGeneralDetailsMapper.search();
-	}
 
 	/* (non-Javadoc)  
 	 * <p>Title: user_iddetial</p>  
@@ -62,6 +52,7 @@ public class OrderListSettlementServiceImpl implements OrderListSettlementServic
 	 */
 	@Override
 	public void shoppingcardeleteselected(Integer shopping_car_id) {
+		// TODO Auto-generated method stub
 		orderGeneralDetailsMapper.shoppingcardeleteselected(shopping_car_id);
 	}
 

@@ -17,15 +17,15 @@ import com.qrsx.springboot.pojo.ShoppingCar;
 
 /**  
 * <p>Title: Shopping_Car_Mapper</p>  
-* <p>Description: </p>  
+* <p>Description: 购物车接口</p>  
 * @author cjl  
 * @date 2019年12月10日  
 */
 @Mapper
 public interface ShoppingCarMapper {
-	public List<ShoppingCar> search();
-
+	//根据用户id展示自己购物车信息
 	public List<ShoppingCar> getAllShoppingCarInfo(Integer user_id);
-
+	
+	//删除购物车商品时修改商品状态
 	public void deletegoods_id(Integer goods_id);
 }

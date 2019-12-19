@@ -21,9 +21,9 @@ import com.qrsx.springboot.pojo.ShoppingCar;
 */
 
 public interface ShoppingCarService {
-	List<ShoppingCar> search();
-
+	//根据用户id展示自己购物车信息
 	List<ShoppingCar> getAllShoppingCarInfo(Integer user_id);
 
+	//删除购物车商品时修改商品状态
 	void deletegoods_id(Integer goods_id);
 }

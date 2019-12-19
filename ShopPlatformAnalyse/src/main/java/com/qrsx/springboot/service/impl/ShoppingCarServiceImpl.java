@@ -20,7 +20,7 @@ import com.qrsx.springboot.service.ShoppingCarService;
 
 /**  
 * <p>Title: Shopping_Car_ServiceImpl</p>  
-* <p>Description: </p>  
+* <p>Description: 购物车服务层接口实现</p>  
 * @author cjl  
 * @date 2019年12月10日  
 */
@@ -30,19 +30,8 @@ public class ShoppingCarServiceImpl implements ShoppingCarService {
 	ShoppingCarMapper shoppingCarMapper;
 
 	/* (non-Javadoc)  
-	 * <p>Title: Search</p>  
-	 * <p>Description: </p>  
-	 * @return  
-	 * @see com.qrsx.springboot.service.Shopping_Car_Service#Search()  
-	 */
-	@Override
-	public List<ShoppingCar> search() {
-		return shoppingCarMapper.search();
-	}
-
-	/* (non-Javadoc)  
 	 * <p>Title: getAllShoppingCarInfo</p>  
-	 * <p>Description: </p>  
+	 * <p>Description: 根据用户id展示自己购物车信息</p>  
 	 * @param user_id
 	 * @return  
 	 * @see com.qrsx.springboot.service.Shopping_Car_Service#getAllShoppingCarInfo(java.lang.Integer)  
@@ -54,7 +43,7 @@ public class ShoppingCarServiceImpl implements ShoppingCarService {
 
 	/* (non-Javadoc)  
 	 * <p>Title: deletegoods_id</p>  
-	 * <p>Description: </p>  
+	 * <p>Description: 删除购物车商品时修改商品状态</p>  
 	 * @param goods_id  
 	 * @see com.qrsx.springboot.service.ShoppingCarService#deletegoods_id(java.lang.Integer)  
 	 */

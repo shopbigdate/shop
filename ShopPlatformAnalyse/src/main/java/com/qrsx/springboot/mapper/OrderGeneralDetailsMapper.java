@@ -15,24 +15,19 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.qrsx.springboot.pojo.OrderDetail;
 import com.qrsx.springboot.pojo.OrderList;
+import com.qrsx.springboot.pojo.UserInfo;
 
 /**  
 * <p>Title: OrderGeneralDetailsMapper</p>  
-* <p>Description: </p>  
+* <p>Description: 购物车结算接口</p>  
 * @author cjl  
 * @date 2019年12月11日  
 */
 @Mapper
 public interface OrderGeneralDetailsMapper {
-	//
-	List<OrderDetail> search();
-
-	//用户购物车商品
-	List<OrderDetail> detial(Double gn);
-
 	//用户id获取用户信息
 	List<OrderList> user_iddetial(Integer user_id);
-
+	
 	//购物车id清空已选商品
 	void shoppingcardeleteselected(Integer shopping_car_id);
 }

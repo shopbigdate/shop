@@ -9,12 +9,19 @@ package com.qrsx.springboot.pojo;
  *     
  */
 public class GoodsInfo {
+	//商品id
 	private Integer goods_id;
+	//商品名
 	private String goods_name;
+	//商品价格
 	private Double goods_price;
+	//商品库存
 	private Integer goods_store;
+	//商品详情
 	private String goods_detail;
+	//商店名
 	private String goods_shop;
+	//商品种类
 	private String goods_category;
 
 	/**  

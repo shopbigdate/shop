@@ -49,23 +49,6 @@ public class SettlementControllor {
 	/**
 	 * 
 	 * <p>
-	 * Title: search
-	 * </p>
-	 * <p>
-	 * Description:
-	 * 
-	 * </p>
-	 * 
-	 * @return
-	 */
-	@GetMapping("/liusuan1")
-	public List<OrderDetail> search() {
-		return orderListSettlementService.search();
-	}
-
-	/**
-	 * 
-	 * <p>
 	 * Title: object
 	 * </p>
 	 * <p>

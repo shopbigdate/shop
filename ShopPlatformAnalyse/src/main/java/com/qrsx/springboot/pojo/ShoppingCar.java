@@ -9,15 +9,24 @@ package com.qrsx.springboot.pojo;
  *     
  */
 public class ShoppingCar {
+	//购物车id
 	private Integer shopping_car_id;
+	//用户id
 	private Integer user_id;
+	//商品id
 	private Integer goods_id;
+	//商品名
 	private String goods_name;
+	//商品价格
 	private Double goods_price;
+	//商品数量
 	private Integer goods_number;
+	//选中selected状态
 	private Boolean isbuy;
+	//购物车商品展示状态
 	private Integer isshow;
 
+	//getset方法
 	public Integer getShopping_car_id() {
 		return shopping_car_id;
 	}
