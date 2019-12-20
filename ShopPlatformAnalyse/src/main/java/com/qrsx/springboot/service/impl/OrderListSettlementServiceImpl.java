@@ -50,7 +50,6 @@ public class OrderListSettlementServiceImpl implements OrderListSettlementServic
 	 */
 	@Override
 	public void shoppingcardeleteselected(Integer shopping_car_id) {
-		// TODO Auto-generated method stub
 		orderGeneralDetailsMapper.shoppingcardeleteselected(shopping_car_id);
 	}
 

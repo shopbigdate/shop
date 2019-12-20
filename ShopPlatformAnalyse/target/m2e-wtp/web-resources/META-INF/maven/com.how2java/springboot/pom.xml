@@ -92,18 +92,13 @@
 			<artifactId>kafka-clients</artifactId>
 			<version>0.9.0.1</version>
 		</dependency>
+		
 		<!-- JOSNObject -->
 		<dependency>
 			<groupId>net.sf.json-lib</groupId>
 			<artifactId>json-lib</artifactId>
 			<version>2.4</version>
 			<classifier>jdk15</classifier>
-		</dependency>
-		<!-- kafka -->
-        <dependency> 
-			<groupId>org.apache.kafka</groupId>
-			<artifactId>kafka-clients</artifactId>
-			<version>0.9.0.1</version>
 		</dependency>
 	</dependencies>
 
@@ -120,5 +115,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

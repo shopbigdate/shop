@@ -57,7 +57,7 @@ public class OrderServiceImpl implements OrderService {
 	public void updateOrderInfo(OrderInfo orderInfo) {
 		orderMapper.updateOrderInfo(orderInfo);
 	}
-	
+
 	/* (non-Javadoc)  
 	 * <p>Title: selectgoods</p>  
 	 * <p>Description: 获取商品信息</p>  
