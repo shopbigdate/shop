@@ -21,6 +21,11 @@
 			<Agent host="192.168.30.130" port="44444" />
 			<PatternLayout pattern="%m%n" />
 		</Flume>
+		<Kafka name="KAFKA" topic="test01">
+			<ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY" />
+			<PatternLayout pattern="%m%n" />
+			<Property name="bootstrap.servers">192.168.154.128:9092</Property>
+		</Kafka>
 	</appenders>
 
 	<!--然后定义logger，只有定义了logger并引入的appender，appender才会生效 -->
@@ -32,7 +37,8 @@
 		<!--这里设置的是全局的日志显示级别 -->
 		<root level="warn">
 			<appender-ref ref="Console" />
-			<appender-ref ref="flume" />
+			<!-- <appender-ref ref="flume" /> -->
+			<appender-ref ref="KAFKA"/>
 		</root>
 	</loggers>
 

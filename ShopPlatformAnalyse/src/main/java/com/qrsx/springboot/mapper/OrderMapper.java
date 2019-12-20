@@ -13,6 +13,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.qrsx.springboot.pojo.GoodsInfo;
 import com.qrsx.springboot.pojo.OrderDetail;
 import com.qrsx.springboot.pojo.OrderInfo;
 
@@ -32,4 +33,7 @@ public interface OrderMapper {
 
 	//更新订单状态
 	void updateOrderInfo(OrderInfo orderInfo);
+
+	//获取商品信息
+	GoodsInfo selectgoods(Integer goods_id);
 }

@@ -1,23 +1,27 @@
 $(function() {
-	$.ajax({
-		url : '../EmpServlet',
-		data : null,
-		dataType : 'json',
-		error : function() {
-			alert("error message");
-		},
-		success : function(data) {
-			myChart.setOption({
-				xAxis : {
-					data : data.ename
-				},
+	//每隔2秒实时刷新数据
+	setInterval(refresh,2000);
+	function refresh() {
+		$.ajax({
+			url : 'http://localhost:8888/ActiveCount/selectToday',
+			data : null,
+			dataType : 'json',
+			error : function() {
+				alert("error message");
+			},
+			success : function(data) {
+				myChart.setOption({
+					xAxis : {
+						data : data.per_hour
+					},
 
-				series : [ {
-					data : data.sal
-				} ]
-			});
-		}
-	});
+					series : [ {
+						data : data.active_count
+					} ]
+				});
+			}
+		});
+	}
 
 	// 基于准备好的dom，初始化echarts图表
 	var myChart = echarts.init(document.getElementById('main'));
@@ -27,16 +31,18 @@ $(function() {
 			// 触发类型，默认（'item'）数据触发，可选为：'item' | 'axis'
 			trigger : 'axis'
 		},
+
 		xAxis : [ {
 			type : 'category',
-			data : [ '2019-01', '2019-02', '2019-03', '2019-04', '2019-05',
-					'2019-06' ],
+			/*data : [ '2019-01', '2019-02', '2019-03', '2019-04', '2019-05',
+					'2019-06' ],*/
 			axisLine : {
 				lineStyle : {
 					color : "#999"
 				}
 			}
 		} ],
+
 		yAxis : [ {
 			type : 'value',
 			splitNumber : 4,
@@ -59,10 +65,11 @@ $(function() {
 				show : false
 			}
 		} ],
+
 		series : [ {
-			name : '课时',
+			name : '活跃人数',
 			type : 'line',
-			data : [ 23, 60, 20, 36, 23, 85 ],
+			/*data : [ 23, 60, 20, 36, 23, 85 ],*/
 			lineStyle : {
 				normal : {
 					width : 8,

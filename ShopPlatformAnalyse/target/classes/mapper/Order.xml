@@ -20,5 +20,10 @@
 		update order_info set order_status = #{order_status},update_time = #{update_time} where order_id =
 		#{order_id}
 	</update>
+	
+	<select id="selectgoods" parameterType="_int" resultType="GoodsInfo" >
+		select  goods_name,goods_category from goods_info where goods_id = 
+		#{goods_id}
+	</select>
 
 </mapper>

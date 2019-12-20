@@ -36,7 +36,8 @@ public class UserInfoServiceImpl implements UserInfoService {
 			userInfoMapper.updateLoginStatus1(userInfo1.getUserId());
 			if (userInfo1.getActiveStatus().equals("0")) {
 				userInfoMapper.updateActiveStatus1(userInfo1.getUserId());
-				log.warn(userInfo1.getUserId() + "," + userInfo1.getUserName() + ",1");
+				//写入log4j日志
+				log.warn(userInfo1.getUserName());
 			}
 		}
 		return userInfo1;

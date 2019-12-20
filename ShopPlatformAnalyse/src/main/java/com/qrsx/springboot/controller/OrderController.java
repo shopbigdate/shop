@@ -16,12 +16,15 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.qrsx.springboot.pojo.GoodsInfo;
 import com.qrsx.springboot.pojo.OrderDetail;
 import com.qrsx.springboot.pojo.OrderInfo;
 import com.qrsx.springboot.pojo.OrderList;
@@ -46,6 +49,8 @@ public class OrderController {
 
 	@Autowired
 	HttpServletRequest request;
+	
+	private static final Logger log = LoggerFactory.getLogger(OrderController.class);
 
 	/**
 	 * <p>Title: getOrderList</p>  
@@ -91,6 +96,9 @@ public class OrderController {
 			o.setGoods_number(orderList.getOrderDetail().get(i).getGoods_number());
 			Double goods_price = goodsInfoService.getOneGoodsInfo(o.getGoods_id()).getGoods_price();
 			o.setGoods_sum(goods_price * o.getGoods_number());
+			
+			GoodsInfo goodsinfo=orderService.selectgoods(orderList.getOrderDetail().get(i).getGoods_id());
+			log.warn(orderList.getOrderDetail().get(i).getGoods_id()+","+goodsinfo.getGoods_name()+","+goodsinfo.getGoods_category()+",1");
 			i++;
 		}
 		//使用事务管理，插入到订单信息表和订单详情表
@@ -111,6 +119,7 @@ public class OrderController {
 		String id = (String) request.getSession().getAttribute("orderId");
 		orderInfo = new OrderInfo(id, orderList.getUser_id(), orderList.getConsignee_name(), orderList.getOrder_sum(),
 				orderList.getOrder_status(), Timestamp.valueOf(sdf2.format(d)), Timestamp.valueOf(sdf2.format(d)));
+		//log.warn(orderInfo.getOrder_id()+","+orderInfo.getOrder_sum()+","+orderInfo.getOrder_status()+","+orderInfo.getUpdate_time()+","+orderInfo.getConsignee_name());
 		//更新订单状态，点击立即下单，订单状态为1；点击确认支付，订单状态为2；点击取消支付，订单状态为3。
 		orderService.updateOrderInfo(orderInfo);
 	}

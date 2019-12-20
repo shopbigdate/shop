@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.qrsx.springboot.mapper.OrderMapper;
+import com.qrsx.springboot.pojo.GoodsInfo;
 import com.qrsx.springboot.pojo.OrderDetail;
 import com.qrsx.springboot.pojo.OrderInfo;
 import com.qrsx.springboot.service.OrderService;
@@ -55,6 +56,17 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public void updateOrderInfo(OrderInfo orderInfo) {
 		orderMapper.updateOrderInfo(orderInfo);
+	}
+	
+	/* (non-Javadoc)  
+	 * <p>Title: selectgoods</p>  
+	 * <p>Description: 获取商品信息</p>  
+	 * @param goods_id  
+	 * @see com.qrsx.springboot.service.OrderService#selectgoods(java.lang.Integer)  
+	 */
+	@Override
+	public GoodsInfo selectgoods(Integer goods_id) {
+		return orderMapper.selectgoods(goods_id);
 	}
 
 }
