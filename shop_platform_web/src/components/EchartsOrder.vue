@@ -1,12 +1,17 @@
 <template>
 	<div>
-		<div id="myChart" :style="{width: '600px', height: '600px',float:'left'}">
+		<div>
+			<div id="myChart" :style="{width: '600px', height: '600px',float:'left'}">
+			</div>
+			<div id="myChart2" :style="{width: '600px', height: '600px',float:'right'}">
+			</div>
 		</div>
-		<div id="myChart2" :style="{width: '600px', height: '600px',float:'right'}">
+		<div style="{marginTop : -650px;}">
+			<div id="myChart3" :style="{width: '500px', height: '500px',float:'left'}"></div>
+			<div id="myChart4" :style="{width: '800px', height: '400px',float:'right'}"></div>
 		</div>
-		<!-- <div id="myChart3" :style="{width: '300px', height: '300px'}"></div> -->
 	</div>
-	
+
 </template>
 
 <script>
@@ -16,6 +21,8 @@
 		name: 'echartsOrder',
 		data() {
 			return {
+				datax: [],
+				datas: [],
 				order: [],
 				listInfo: [],
 				listInfo2: [],
@@ -27,14 +34,30 @@
 		},
 		mounted: function() {
 			this.searchall();
-			//this.drawLine3();
+			this.drawLine3();
+			//第一次加载
+			this.refresh()
+			//每隔n秒实时刷新数据
+			this.timer = setInterval(() => {
+				this.refresh();
+			}, 5000)
 		},
 		methods: {
+
+			refresh() {
+				this.$axios.get('http://localhost:8888/echarts/selectToday')
+					.then((res) => {
+						console.log(res)
+						this.datax = res.data.per_hour
+						this.datas = res.data.active_count
+						this.drawLine4();
+					});
+			},
 			searchall: function() {
 				var url = 'http://localhost:8888/echarts/echartsOrder';
 				axios.post(url).then((response) => {
 					this.order = response.data;
-					for(var i = 0; i < this.order.length; i++) {
+					for (var i = 0; i < this.order.length; i++) {
 						this.listInfo.push(this.order[i].order_sum_count);
 						this.listInfo2.push(this.order[i].order_trade_sum);
 						this.listInfo3.push(this.order[i].order_refund_sum);
@@ -173,7 +196,7 @@
 						axisLine: {
 							lineStyle: {
 								color: 'white'
-			
+
 							}
 						},
 						axisLabel: {
@@ -184,7 +207,7 @@
 							}
 						},
 					},
-			
+
 					yAxis: {
 						type: 'value',
 						name: '数量',
@@ -217,7 +240,7 @@
 						handleSize: '110%',
 						handleStyle: {
 							color: "#d3dee5",
-			
+
 						},
 						textStyle: {
 							color: "#fff"
@@ -263,7 +286,7 @@
 									}]),
 									barBorderRadius: 11,
 								}
-			
+
 							},
 							data: d.refundcount
 						}
@@ -274,7 +297,7 @@
 				};
 				setInterval(function() {
 					var dataLen = option.series[0].data.length;
-			
+
 					// 取消之前高亮的图形
 					myChart.dispatchAction({
 						type: 'downplay',
@@ -295,37 +318,131 @@
 						seriesIndex: 0,
 						dataIndex: app.currentIndex
 					});
-			
+
 				}, 1000);
-				
+
 				myChart.setOption(option);
 			},
-			// drawLine3() {
-			// 				// 基于准备好的dom，初始化echarts实例	
-			// 				alert('dsafg');
-			// 				let myChart = this.$echarts.init(document.getElementById('myChart3'));
-			// 				var url = 'http://localhost:8888/echarts/Top3';
-			// 				axios.post(url).then((response) => {
-			// 					var info = response.data;
-			// 					alert(info);
-			// 					myChart.setOption({
-			// 						title: {
-			// 							text: '各类别热门商品Top3',
-			// 						},
-			// 						series: {
-			// 							type: 'sunburst',
-			// 							data: info,
-			// 						},
-			// 						tooltip: {
-			// 							trigger: 'item',
-			// 							formatter: "商品名：{b},销量：{c}"
-			
-			// 						}
-			// 					});
-			// 				})
-			
-			// 			}
-		}
+			drawLine3() {
+				// 基于准备好的dom，初始化echarts实例	
+
+				let myChart = this.$echarts.init(document.getElementById('myChart3'));
+				alert('dsafg');
+				var url = 'http://localhost:8888/echarts/Top3';
+				this.$axios.post(url).then((response) => {
+					var info = response.data;
+					alert(info);
+					myChart.setOption({
+						title: {
+							text: '各类别热门商品Top3',
+						},
+						series: {
+							type: 'sunburst',
+							data: info,
+						},
+						tooltip: {
+							trigger: 'item',
+							formatter: "商品名：{b},销量：{c}"
+
+						}
+					});
+				})
+
+			},
+
+			drawLine4() {
+				// 基于准备好的dom，初始化echarts实例
+				let myChart = this.$echarts.init(document.getElementById('myChart4'))
+				// 绘制图表
+				myChart.setOption({
+					tooltip: {
+						// 触发类型，默认（'item'）数据触发，可选为：'item' | 'axis'
+						trigger: 'axis'
+					},
+
+					xAxis: [{
+						type: 'category',
+						/*data: ['2019-01', '2019-02', '2019-03', '2019-04', '2019-05',
+							'2019-06'
+						],*/
+						data: this.datax,
+						axisLine: {
+							lineStyle: {
+								color: "#999"
+							}
+						}
+					}],
+
+					yAxis: [{
+						type: 'value',
+						splitNumber: 4,
+						splitLine: {
+							lineStyle: {
+								type: 'dashed',
+								color: '#DDD'
+							}
+						},
+						axisLine: {
+							show: false,
+							lineStyle: {
+								color: "#333"
+							},
+						},
+						nameTextStyle: {
+							color: "#999"
+						},
+						splitArea: {
+							show: false
+						}
+					}],
+
+					series: [{
+						name: '活跃人数',
+						type: 'line',
+						/*data: [23, 60, 20, 36, 23, 85],*/
+						data: this.datas,
+						lineStyle: {
+							normal: {
+								width: 8,
+								color: {
+									type: 'linear',
+
+									colorStops: [{
+										offset: 0,
+										color: '#A9F387' // 0% 处的颜色
+									}, {
+										offset: 1,
+										color: '#48D8BF' // 100% 处的颜色
+									}],
+									globalCoord: false
+									// 缺省为 false
+								},
+								shadowColor: 'rgba(72,216,191, 0.3)',
+								shadowBlur: 10,
+								shadowOffsetY: 20
+							}
+						},
+						itemStyle: {
+							normal: {
+								color: '#fff',
+								borderWidth: 10,
+								/*shadowColor: 'rgba(72,216,191, 0.3)',
+								shadowBlur: 100,*/
+								borderColor: "#A9F387"
+							}
+						},
+						smooth: true
+					}]
+				});
+				//this.refresh();
+			}
+		},
+		beforeDestroy() {
+			// 在Vue实例销毁前，清除定时器
+			if (this.timer) {
+				clearInterval(this.timer);
+			}
+		},
 	}
 </script>
 
