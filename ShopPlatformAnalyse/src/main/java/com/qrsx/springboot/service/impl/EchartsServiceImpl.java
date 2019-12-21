@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.qrsx.springboot.mapper.EchartsMapper;
 import com.qrsx.springboot.pojo.ActiveCount;
+import com.qrsx.springboot.pojo.OrderCount;
 import com.qrsx.springboot.service.EchartsService;
 
 /**
@@ -25,6 +26,12 @@ public class EchartsServiceImpl implements EchartsService {
 	@Override
 	public List<ActiveCount> select(String date) {
 		return echartsMapper.select(date);
+	}
+	
+	//订单统计表查询
+	@Override
+	public List<OrderCount> order() {
+		return echartsMapper.order();
 	}
 
 }

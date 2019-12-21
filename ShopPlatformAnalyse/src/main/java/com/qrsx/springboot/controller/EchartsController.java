@@ -6,9 +6,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qrsx.springboot.pojo.ActiveCount;
+import com.qrsx.springboot.pojo.OrderCount;
 import com.qrsx.springboot.service.EchartsService;
 
 import net.sf.json.JSONObject;
@@ -61,4 +63,10 @@ public class EchartsController {
 	public String showLineChart() {
 		return "line_chart";
 	}
+	
+	//订单echarts
+		@RequestMapping(value = "/echartsOrder", method = RequestMethod.POST)
+		public List<OrderCount> order() {
+			return echartsService.order();
+		}
 }

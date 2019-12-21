@@ -31,7 +31,7 @@
 					</li>
 					<li class="space"></li>
 					<li>
-						<a href="#">京东会员</a>
+						<router-link to="/echarts_OrderNumber">京东会员</router-link>
 					</li>
 					<li class="space"></li>
 					<li>

@@ -21,7 +21,7 @@
 			<Agent host="192.168.30.130" port="44444" />
 			<PatternLayout pattern="%m%n" />
 		</Flume>
-		
+
 		<!--输出到Kafka -->
 		<Kafka name="KAFKA" topic="test01">
 			<ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY" />
