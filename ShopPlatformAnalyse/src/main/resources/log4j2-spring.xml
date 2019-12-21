@@ -38,7 +38,7 @@
 		<root level="warn">
 			<appender-ref ref="Console" />
 			<!-- <appender-ref ref="flume" /> -->
-			<appender-ref ref="KAFKA"/>
+			<!-- <appender-ref ref="KAFKA"/> -->
 		</root>
 	</loggers>
 

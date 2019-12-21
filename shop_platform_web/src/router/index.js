@@ -6,6 +6,7 @@ import Login from '@/components/Login'
 import GoodDetails from '@/components/GoodsDetails'
 import Order from '@/components/Order'
 import ShoppingCar from '@/components/ShoppingCar'
+import Echarts_OrderNumber from '@/components/Echarts_OrderNumber'
 
 Vue.use(Router)
 
@@ -40,5 +41,10 @@ export default new Router({
 			name: 'shoppingCar',
 			component: ShoppingCar
 		},
+		{
+			path: '/echarts_OrderNumber',
+			name: 'echarts_OrderNumber',
+			component: Echarts_OrderNumber
+		}
 	]
 })

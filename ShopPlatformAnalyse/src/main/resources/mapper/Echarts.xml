@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qrsx.springboot.mapper.EchartsMapper">
+
+	<select id="select" parameterType="String" resultType="ActiveCount">
+		select active_count_id,per_hour,active_count from
+		active_count where
+		DATE_FORMAT(per_hour,'%Y-%m-%d')=#{0};
+	</select>
+
+	<select id="order" resultType="OrderCount" >
+		select order_trade_sum,order_refund_sum,order_sum_count,order_pay_count,order_refund_count,order_count_date from order_count where 
+		SUBDATE(CURDATE(),INTERVAL 7 Day) &lt; order_count_date group by
+		substring(order_count_date,1,10)
+	</select>
+</mapper>

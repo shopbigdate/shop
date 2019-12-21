@@ -5,6 +5,10 @@ import App from './App'
 import router from './router'
 Vue.config.productionTip = false
 
+// 引入echarts
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts ;
+
 import Qs from 'qs'
 Vue.prototype.qs = Qs;
 
