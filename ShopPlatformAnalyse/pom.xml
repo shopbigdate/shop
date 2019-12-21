@@ -87,12 +87,12 @@
 			<version>1.6.0</version>
 		</dependency>
 		<!-- kafka -->
-        <dependency> 
+		<dependency>
 			<groupId>org.apache.kafka</groupId>
 			<artifactId>kafka-clients</artifactId>
 			<version>0.9.0.1</version>
 		</dependency>
-		
+
 		<!-- JOSNObject -->
 		<dependency>
 			<groupId>net.sf.json-lib</groupId>

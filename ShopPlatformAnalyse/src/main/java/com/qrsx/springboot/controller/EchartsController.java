@@ -5,36 +5,33 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.qrsx.springboot.pojo.ActiveCount;
-import com.qrsx.springboot.service.Echarts_line_chart_Service;
+import com.qrsx.springboot.service.EchartsService;
 
 import net.sf.json.JSONObject;
 
 /**
  * 
- * @ClassName: Echarts_line_chart_Controller
- * @Description: TODO(24小时活跃人数折线图)
+ * @ClassName: EchartsController
  * @author zsd
  * @date 2019年12月20日
  *
  */
-@Controller
-@RequestMapping("ActiveCount")
-public class Echarts_line_chart_Controller {
+@RestController
+@RequestMapping("echarts")
+public class EchartsController {
 
 	@Autowired
-	private Echarts_line_chart_Service echarts_line_chart_Service;
+	private EchartsService echartsService;
 
-	//获取数据
+	//24小时活跃人数折线图，获取数据
 	@RequestMapping("selectToday")
-	@ResponseBody
 	public JSONObject selectToday() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		List<ActiveCount> activeCounts = echarts_line_chart_Service.select(sdf.format(new Date()));
+		List<ActiveCount> activeCounts = echartsService.select(sdf.format(new Date()));
 		int total = activeCounts.size();
 		//x轴上滑动显示24条数据
 		int j = total - 1;
@@ -59,7 +56,7 @@ public class Echarts_line_chart_Controller {
 		return data;
 	}
 
-	////处理页面跳转，即入口
+	//24小时活跃人数折线图，处理页面跳转，即入口
 	@RequestMapping("showLineChart")
 	public String showLineChart() {
 		return "line_chart";

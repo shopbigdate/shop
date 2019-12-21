@@ -21,9 +21,12 @@
 			<Agent host="192.168.30.130" port="44444" />
 			<PatternLayout pattern="%m%n" />
 		</Flume>
+		
+		<!--输出到Kafka -->
 		<Kafka name="KAFKA" topic="test01">
 			<ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY" />
 			<PatternLayout pattern="%m%n" />
+			<!-- 注意要把host改为自己虚拟机的ip地址 -->
 			<Property name="bootstrap.servers">192.168.154.128:9092</Property>
 		</Kafka>
 	</appenders>
@@ -37,8 +40,8 @@
 		<!--这里设置的是全局的日志显示级别 -->
 		<root level="warn">
 			<appender-ref ref="Console" />
-			<!-- <appender-ref ref="flume" /> -->
-			<appender-ref ref="KAFKA"/>
+			<appender-ref ref="flume" />
+			<!-- <appender-ref ref="KAFKA"/> -->
 		</root>
 	</loggers>
 
