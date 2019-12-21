@@ -18,5 +18,19 @@
 		SUBDATE(CURDATE(),INTERVAL 7 Day) &lt; order_count_date group by
 		substring(order_count_date,1,10)
 	</select>
+	
+	
+	<select id="getAllGoodsOrderCount" resultType="Sunburst">
+		select
+		goods_category name,sum(sum) value
+		from goods_order_count where day = #{time} group by goods_category 
+	</select>
+	
+	
+	<select id="getAllChild" resultType="SunburstChild">
+ 		select
+		goods_name name,sum value
+		from goods_order_count where day =#{time}  and goods_category=#{goods_category}
+	</select>
 
 </mapper>

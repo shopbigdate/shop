@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.qrsx.springboot.mapper.EchartsMapper;
 import com.qrsx.springboot.pojo.ActiveCount;
 import com.qrsx.springboot.pojo.OrderCount;
+import com.qrsx.springboot.pojo.Sunburst;
 import com.qrsx.springboot.service.EchartsService;
 
 /**
@@ -32,6 +33,23 @@ public class EchartsServiceImpl implements EchartsService {
 	@Override
 	public List<OrderCount> order() {
 		return echartsMapper.order();
+	}
+	
+	/**
+	 * 
+	 * <p>Title: getAllGoodsOrderCount</p>   
+	 * <p>Description: </p>   
+	 * @return   
+	 * @see com.qrsx.springboot.service.EchartsService#getAllGoodsOrderCount()
+	 */
+	@Override
+	public List<Sunburst> getAllGoodsOrderCount(String time) {
+		List<Sunburst> result=echartsMapper.getAllGoodsOrderCount(time);
+		for (int i=0;i< result.size();i++) {
+			result.get(i).setChildren(echartsMapper.getAllChild(time, result.get(i).getName()));; 
+		}
+		
+		return result;
 	}
 
 }

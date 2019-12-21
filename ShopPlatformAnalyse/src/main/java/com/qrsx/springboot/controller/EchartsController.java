@@ -69,4 +69,19 @@ public class EchartsController {
 		public List<OrderCount> order() {
 			return echartsService.order();
 		}
+		/**
+	 * 
+	 * @Title: getOneGoodsInfo   
+	 * @Description: 热门商品Top3
+	 * @param: @param goods_info
+	 * @param: @return
+	 * @param: @throws Exception      
+	 * @return: GoodsInfo      
+	 * @throws
+	 */
+	@RequestMapping(value = "/Top3", method = RequestMethod.GET)
+	public List<Sunburst> getOneGoodsInfo() throws Exception {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		return echartsService.getAllGoodsOrderCount(df.format(new Date()));
+	}
 }
