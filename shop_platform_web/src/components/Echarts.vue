@@ -1,19 +1,49 @@
 <template>
- <div style="background-color: #323a5e">
-    <h1>今日报表</h1>
-    <div>
-      <div id="myChart" :style="{width: '753px', height: '600px',float:'left'}"></div>
-      <div id="myChart2" :style="{width: '691px', height: '600px',float:'right',left:'-1px'}"></div>
-    </div>
-    <div style="{marginTop : -650px;}">
-      <div id="myChart3" :style="{width: '680px', height: '500px',float:'left'}"></div>
-      <div id="myChart4" :style="{width: '760px', height: '500px',float:'right'}"></div>
-    </div>
- </div>
+	<!--尝试使用百分比设置div的长和宽，但不起作用 -->
+	<!--<div style="background-color: #323a5e,weight:100%,height:100%">
+		<h1 style="color: #c3c3c3">今日报表</h1>
+		<div>
+			<div id="myChart" :style="width: 50%, height: 50%,float:left"></div>
+			<div id="myChart2" :style="width: 50%, height: 50%,float:right,left:-1px"></div>
+		</div>
+		<div style="marginTop : -650px">
+			<div id="myChart3" :style="width: 50%, height: 50%,float:left"></div>
+			<div id="myChart4" :style="width: 50%, height: 50%,float:right,left:-1px"></div>
+		</div>
+	</div>-->
+
+	<!--使用style替代：style后，id="myChart"显示异常-->
+	<!--<div style="background-color: #323a5e">
+		<div>
+			<h1 style="margin: 0px; text-align: center;">今日报表</h1>
+		</div>
+		<div>
+			
+			<div id="myChart" style="width: 680px; height: 300px; float:left"></div>
+			<div id="myChart2" style="width: 680px; height: 300px; float:right"></div>
+		</div>
+		<div>
+			<div id="myChart3" style="width: 680px; height: 300px; float:left}"></div>
+			<div id="myChart4" style="width: 680px; height: 300px; float:right}"></div>
+		</div>
+	</div>-->
+
+	<div style="background-color: #323a5e">
+		<!--<div style="background-image:url(../img/beijing.jpg)">-->
+		<h1 style="margin: 0px; text-align: center; color:white">今日报表</h1>
+		<div>
+			<div id="myChart" :style="{width: '689.5px', height: '300px',float:'left'}"></div>
+			<div id="myChart2" :style="{width: '689.5px', height: '300px',float:'right'}"></div>
+		</div>
+		<div style="margin-top: 301px;">
+			<!--<div>-->
+			<div id="myChart3" :style="{width: '689.5px', height: '300px',float:'left'}"></div>
+			<div id="myChart4" :style="{width: '689.5px', height: '300px',float:'right'}"></div>
+		</div>
+	</div>
+
 </template>
 
-<style scoped>
-</style>
 <script>
 	import axios from 'axios';
 	import echarts from 'echarts';
@@ -57,7 +87,7 @@
 				var url = 'http://localhost:8888/echarts/echartsOrder';
 				axios.post(url).then((response) => {
 					this.order = response.data;
-					for (var i = 0; i < this.order.length; i++) {
+					for(var i = 0; i < this.order.length; i++) {
 						this.listInfo.push(this.order[i].order_sum_count);
 						this.listInfo2.push(this.order[i].order_trade_sum);
 						this.listInfo3.push(this.order[i].order_refund_sum);
@@ -77,6 +107,12 @@
 				// 绘制图表
 				myChart.setOption({
 					backgroundColor: '#323a5e',
+					title: {
+						text: '订单交易金额统计',
+						textStyle: {
+							color: '#fff'
+						}
+					},
 					tooltip: {
 						trigger: 'axis',
 						axisPointer: {
@@ -88,44 +124,46 @@
 					},
 					toolbox: {
 						feature: {
-							dataView: {
-								show: true,
-								readOnly: false
-							},
 							magicType: {
 								show: true,
 								type: ['line', 'bar']
 							},
 							restore: {
 								show: true
-							},
-							saveAsImage: {
-								show: true
 							}
 						}
 					},
 					legend: {
-						data: ['订单交易总额', '订单退款总额', '订单数']
+						data: ['订单交易总额', '订单退款总额', '订单数'],
+						textStyle: {
+							color: "#fff"
+						}
 					},
 					xAxis: [{
 						type: 'category',
 						data: d.timelist,
 						axisPointer: {
-							type: 'shadow'
+							type: 'shadow',
 						},
 						axisLabel: {
 							interval: 0,
-							rotate: -20
+							rotate: -20,
+							textStyle: { //改变刻度字体样式
+								color: '#fff'
+							}
 						}
 					}],
 					yAxis: [{
 							type: 'value',
 							name: '金额',
 							min: 0,
-							max: 2000,
+							max: 1000,
 							interval: 200,
 							axisLabel: {
-								formatter: '{value} 元'
+								formatter: '{value} 元',
+								textStyle: { //改变刻度字体样式
+									color: '#fff'
+								}
 							}
 						},
 						{
@@ -135,7 +173,10 @@
 							max: 25,
 							interval: 5,
 							axisLabel: {
-								formatter: '{value} 个'
+								formatter: '{value} 个',
+								textStyle: { //改变刻度字体样式
+									color: '#fff'
+								}
 							}
 						}
 					],
@@ -147,13 +188,13 @@
 						{
 							name: '订单退款总额',
 							type: 'bar',
-							data: d.listInfo3
+							data: d.listInfo3,
+							color: '#5BA3CC'
 						},
 						{
 							name: '订单数',
 							type: 'line',
 							yAxisIndex: 1,
-
 							data: d.listInfo
 						}
 					]
@@ -166,6 +207,12 @@
 				// 绘制图表
 				let option = {
 					backgroundColor: '#323a5e',
+					title: {
+						text: '订单交易个数统计',
+						textStyle: {
+							color: '#fff'
+						}
+					},
 					tooltip: {
 						trigger: 'axis',
 						axisPointer: { // 坐标轴指示器，坐标轴触发有效
@@ -324,17 +371,19 @@
 				myChart.setOption(option);
 			},
 			drawLine3() {
-				// 基于准备好的dom，初始化echarts实例	
+				// 基于准备好的dom，初始化echarts实例
+
 				let myChart = this.$echarts.init(document.getElementById('myChart3'));
-				alert('dsafg');
 				var url = 'http://localhost:8888/echarts/Top3';
 				this.$axios.post(url).then((response) => {
 					var info = response.data;
-					alert(info);
 					myChart.setOption({
 						backgroundColor: '#323a5e',
 						title: {
 							text: '各类别热门商品Top3',
+							textStyle: {
+								color: '#fff'
+							}
 						},
 						series: {
 							type: 'sunburst',
@@ -356,6 +405,12 @@
 				// 绘制图表
 				myChart.setOption({
 					backgroundColor: '#323a5e',
+					title: {
+						text: '24小时活跃人数统计',
+						textStyle: {
+							color: '#fff'
+						}
+					},
 					tooltip: {
 						// 触发类型，默认（'item'）数据触发，可选为：'item' | 'axis'
 						trigger: 'axis'
@@ -369,7 +424,7 @@
 						data: this.datax,
 						axisLine: {
 							lineStyle: {
-								color: "#999"
+								color: "#fff"
 							}
 						}
 					}],
@@ -386,7 +441,7 @@
 						axisLine: {
 							show: false,
 							lineStyle: {
-								color: "#333"
+								color: "#fff"
 							},
 						},
 						nameTextStyle: {
@@ -440,11 +495,12 @@
 		},
 		beforeDestroy() {
 			// 在Vue实例销毁前，清除定时器
-			if (this.timer) {
+			if(this.timer) {
 				clearInterval(this.timer);
 			}
 		},
 	}
 </script>
 
-
+<style scoped>
+</style>

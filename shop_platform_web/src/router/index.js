@@ -6,8 +6,8 @@ import Login from '@/components/Login'
 import GoodDetails from '@/components/GoodsDetails'
 import Order from '@/components/Order'
 import ShoppingCar from '@/components/ShoppingCar'
-import EchartsOrder from '@/components/EchartsOrder'
-
+import LineChart from '@/components/LineChart'
+import Echarts from '@/components/Echarts'
 
 Vue.use(Router)
 
@@ -43,9 +43,14 @@ export default new Router({
 			component: ShoppingCar
 		},
 		{
-			path: '/echartsOrder',
-			name: 'echartsOrder',
-			component: EchartsOrder
+			path: '/lineChart',
+			name: 'lineChart',
+			component: LineChart
+		},
+		{
+			path: '/echarts',
+			name: 'echarts',
+			component: Echarts
 		}
 	]
 })
