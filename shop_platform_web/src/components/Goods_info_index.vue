@@ -26,7 +26,7 @@
 					</li>
 					<li class="space"></li>
 					<li>
-						<a href="#">我的京东</a>
+						<router-link to="/echartsOrder">我的京东</router-link>
 						<i></i>
 					</li>
 					<li class="space"></li>
@@ -35,7 +35,7 @@
 					</li>
 					<li class="space"></li>
 					<li>
-						<a href="#">企业采购</a>
+						<router-link to="/Top3">Top3</router-link>
 					</li>
 					<li class="space"></li>
 					<li>
