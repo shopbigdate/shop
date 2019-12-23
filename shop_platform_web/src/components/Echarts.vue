@@ -195,7 +195,8 @@
 							name: '订单数',
 							type: 'line',
 							yAxisIndex: 1,
-							data: d.listInfo
+							data: d.listInfo,
+							color:'#00cccc'
 						}
 					]
 				});
@@ -411,7 +412,7 @@
 							color: '#fff'
 						}
 					},
-					tooltip: {
+					toip: {
 						// 触发类型，默认（'item'）数据触发，可选为：'item' | 'axis'
 						trigger: 'axis'
 					},
