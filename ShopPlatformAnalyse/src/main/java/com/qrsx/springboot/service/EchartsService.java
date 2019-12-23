@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.qrsx.springboot.pojo.ActiveCount;
 import com.qrsx.springboot.pojo.OrderCount;
+import com.qrsx.springboot.pojo.Sunburst;
 
 /**
  * 
@@ -19,5 +20,8 @@ public interface EchartsService {
 
 	//订单统计表查询
 	List<OrderCount> order();
+
+	//获取Top3的信息
+	List<Sunburst> getAllGoodsOrderCount(String time);
 
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.qrsx.springboot.mapper.EchartsMapper;
 import com.qrsx.springboot.pojo.ActiveCount;
 import com.qrsx.springboot.pojo.OrderCount;
+import com.qrsx.springboot.pojo.Sunburst;
 import com.qrsx.springboot.service.EchartsService;
 
 /**
@@ -27,11 +28,21 @@ public class EchartsServiceImpl implements EchartsService {
 	public List<ActiveCount> select(String date) {
 		return echartsMapper.select(date);
 	}
-	
+
 	//订单统计表查询
 	@Override
 	public List<OrderCount> order() {
 		return echartsMapper.order();
+	}
+
+	//热门商品Top3
+	@Override
+	public List<Sunburst> getAllGoodsOrderCount(String time) {
+		List<Sunburst> result = echartsMapper.getAllGoodsOrderCount(time);
+		for (int i = 0; i < result.size(); i++) {
+			result.get(i).setChildren(echartsMapper.getAllChild(time, result.get(i).getName()));
+		}
+		return result;
 	}
 
 }

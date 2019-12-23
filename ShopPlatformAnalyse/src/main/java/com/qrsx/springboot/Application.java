@@ -17,6 +17,7 @@ public class Application {
 
 	public static void main(String[] args) {
 		//SpringApplication.run(Application.class, args);
+		
 		//清除spring boot的图标
 		SpringApplication springApplication = new SpringApplication(Application.class);
 		springApplication.setBannerMode(Banner.Mode.OFF);

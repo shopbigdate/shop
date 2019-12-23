@@ -86,6 +86,7 @@
 			<artifactId>flume-ng-log4jappender</artifactId>
 			<version>1.6.0</version>
 		</dependency>
+		
 		<!-- kafka -->
 		<dependency>
 			<groupId>org.apache.kafka</groupId>
