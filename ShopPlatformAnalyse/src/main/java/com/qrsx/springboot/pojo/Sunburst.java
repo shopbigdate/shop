@@ -49,6 +49,5 @@ public class Sunburst {
 
 	public Sunburst() {
 		super();
-
 	}
 }

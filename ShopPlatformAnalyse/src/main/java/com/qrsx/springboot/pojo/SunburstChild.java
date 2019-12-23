@@ -37,7 +37,6 @@ public class SunburstChild {
 
 	public SunburstChild() {
 		super();
-
 	}
 
 }
