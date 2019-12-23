@@ -1,19 +1,19 @@
 <template>
-	<div>
-		<div>
-			<div id="myChart" :style="{width: '600px', height: '600px',float:'left'}">
-			</div>
-			<div id="myChart2" :style="{width: '600px', height: '600px',float:'right'}">
-			</div>
-		</div>
-		<div style="{marginTop : -650px;}">
-			<div id="myChart3" :style="{width: '500px', height: '500px',float:'left'}"></div>
-			<div id="myChart4" :style="{width: '800px', height: '400px',float:'right'}"></div>
-		</div>
-	</div>
-
+ <div style="background-color: #323a5e">
+    <h1>今日报表</h1>
+    <div>
+      <div id="myChart" :style="{width: '753px', height: '600px',float:'left'}"></div>
+      <div id="myChart2" :style="{width: '691px', height: '600px',float:'right',left:'-1px'}"></div>
+    </div>
+    <div style="{marginTop : -650px;}">
+      <div id="myChart3" :style="{width: '680px', height: '500px',float:'left'}"></div>
+      <div id="myChart4" :style="{width: '760px', height: '500px',float:'right'}"></div>
+    </div>
+ </div>
 </template>
 
+<style scoped>
+</style>
 <script>
 	import axios from 'axios';
 	import echarts from 'echarts';
@@ -76,6 +76,7 @@
 				let myChart = d.$echarts.init(document.getElementById('myChart'));
 				// 绘制图表
 				myChart.setOption({
+					backgroundColor: '#323a5e',
 					tooltip: {
 						trigger: 'axis',
 						axisPointer: {
@@ -159,7 +160,6 @@
 				});
 			},
 			drawLine2() {
-				alert("sdafghjkl");
 				var d = this;
 				// 基于准备好的dom，初始化echarts实例
 				let myChart = this.$echarts.init(document.getElementById('myChart2'));
@@ -325,7 +325,6 @@
 			},
 			drawLine3() {
 				// 基于准备好的dom，初始化echarts实例	
-
 				let myChart = this.$echarts.init(document.getElementById('myChart3'));
 				alert('dsafg');
 				var url = 'http://localhost:8888/echarts/Top3';
@@ -333,6 +332,7 @@
 					var info = response.data;
 					alert(info);
 					myChart.setOption({
+						backgroundColor: '#323a5e',
 						title: {
 							text: '各类别热门商品Top3',
 						},
@@ -355,6 +355,7 @@
 				let myChart = this.$echarts.init(document.getElementById('myChart4'))
 				// 绘制图表
 				myChart.setOption({
+					backgroundColor: '#323a5e',
 					tooltip: {
 						// 触发类型，默认（'item'）数据触发，可选为：'item' | 'axis'
 						trigger: 'axis'
@@ -446,6 +447,4 @@
 	}
 </script>
 
-<style scoped>
 
-</style>
