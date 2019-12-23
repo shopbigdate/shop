@@ -1,12 +1,3 @@
-/**  
-* <p>Title: OrderController.java</p>  
-* <p>Description: </p>  
-* <p>Copyright: Copyright (c) 2017</p>  
-* <p>Company: www.qst.com</p>  
-* @author llx  
-* @date 2019年12月9日  
-* @version 1.0  
-*/
 package com.qrsx.springboot.controller;
 
 import java.sql.Timestamp;
@@ -32,12 +23,6 @@ import com.qrsx.springboot.service.GoodsInfoService;
 import com.qrsx.springboot.service.OrderService;
 import com.qrsx.springboot.util.GetOrderId;
 
-/**  
-* <p>Title: OrderController</p>  
-* <p>Description: 订单控制层</p>  
-* @author llx  
-* @date 2019年12月9日  
-*/
 @RestController
 public class OrderController {
 	//自动连接到Service Bean
@@ -49,7 +34,7 @@ public class OrderController {
 
 	@Autowired
 	HttpServletRequest request;
-
+	
 	private static final Logger log = LoggerFactory.getLogger(OrderController.class);
 
 	/**
@@ -96,10 +81,9 @@ public class OrderController {
 			o.setGoods_number(orderList.getOrderDetail().get(i).getGoods_number());
 			Double goods_price = goodsInfoService.getOneGoodsInfo(o.getGoods_id()).getGoods_price();
 			o.setGoods_sum(goods_price * o.getGoods_number());
-
-			GoodsInfo goodsinfo = orderService.selectgoods(orderList.getOrderDetail().get(i).getGoods_id());
-			log.warn("hot_goods" + orderList.getOrderDetail().get(i).getGoods_id() + "," + goodsinfo.getGoods_name()
-					+ "," + goodsinfo.getGoods_category() + ",1");
+			
+			GoodsInfo goodsinfo=orderService.selectgoods(orderList.getOrderDetail().get(i).getGoods_id());
+			log.warn("hot_goods,"+orderList.getOrderDetail().get(i).getGoods_id()+","+goodsinfo.getGoods_name()+","+goodsinfo.getGoods_category()+",1"+",0"+",0"+",0"+",0");
 			i++;
 		}
 		//使用事务管理，插入到订单信息表和订单详情表
@@ -120,8 +104,7 @@ public class OrderController {
 		String id = (String) request.getSession().getAttribute("orderId");
 		orderInfo = new OrderInfo(id, orderList.getUser_id(), orderList.getConsignee_name(), orderList.getOrder_sum(),
 				orderList.getOrder_status(), Timestamp.valueOf(sdf2.format(d)), Timestamp.valueOf(sdf2.format(d)));
-		log.warn("order" + orderInfo.getOrder_id() + "," + orderInfo.getOrder_sum() + "," + orderInfo.getOrder_status()
-				+ "," + orderInfo.getUpdate_time() + "," + orderInfo.getConsignee_name());
+		log.warn("order,"+orderInfo.getOrder_id()+",0"+",0"+",0,"+orderInfo.getOrder_sum()+","+orderInfo.getOrder_status()+","+orderInfo.getUpdate_time()+","+orderInfo.getConsignee_name());
 		//更新订单状态，点击立即下单，订单状态为1；点击确认支付，订单状态为2；点击取消支付，订单状态为3。
 		orderService.updateOrderInfo(orderInfo);
 	}
