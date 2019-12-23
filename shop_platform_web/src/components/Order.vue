@@ -1,4 +1,4 @@
-﻿<template>
+<template>
 	<div>
 		<!--收货地址body部分开始-->
 		<div class="border_top_cart">
@@ -531,14 +531,14 @@
 				}
 			}
 		},
-		mounted: function() { //mounted　表示这个 Vue 对象加载成功了
+		created: function() { //mounted　表示这个 Vue 对象加载成功了
 			var self = this;
 			axios.post("http://localhost:8888/getOrders").then(function(response) {
 				self.input = response.data;
 			})
 		},
 		methods: {
-			payfor: function() {
+payfor: function() {
 				var self = this;
 				let formData = JSON.stringify(self.input)
 				var url = "http://localhost:8888/orders";
@@ -559,7 +559,9 @@
 						type: 'success',
 						message: '支付成功!'
 					});
-					axios.post(url2, formData, {
+					self.input.order_status="2";
+					let formData2 = JSON.stringify(self.input);
+					axios.post(url2, formData2, {
 						headers: {
 							'Content-Type': 'application/json;charset=UTF-8'
 						}
@@ -571,9 +573,19 @@
 						type: 'info',
 						message: '支付失败!'
 					});
+					self.input.order_status="3";
+					let formData2 = JSON.stringify(self.input);
+					axios.post(url2, formData2, {
+						headers: {
+							'Content-Type': 'application/json;charset=UTF-8'
+						}
+					}).then(function(response) {
+						console.log(response);
+					})
 				});
 
 			}
+
 
 		}
 
