@@ -111,7 +111,8 @@
 						text: '订单交易金额统计',
 						textStyle: {
 							color: '#fff'
-						}
+						},
+						left: 25
 					},
 					tooltip: {
 						trigger: 'axis',
@@ -196,7 +197,7 @@
 							type: 'line',
 							yAxisIndex: 1,
 							data: d.listInfo,
-							color:'#00cccc'
+							color: '#00cccc'
 						}
 					]
 				});
@@ -211,8 +212,9 @@
 					title: {
 						text: '订单交易个数统计',
 						textStyle: {
-							color: '#fff'
-						}
+							color: '#fff',
+						},
+						right: 25
 					},
 					tooltip: {
 						trigger: 'axis',
@@ -229,7 +231,7 @@
 					},
 					legend: {
 						data: ['交易成功订单数', '交易失败订单数'],
-						right: 10,
+						left: 'center',
 						top: 12,
 						textStyle: {
 							color: "#fff"
@@ -384,7 +386,9 @@
 							text: '各类别热门商品Top3',
 							textStyle: {
 								color: '#fff'
-							}
+							},
+							left: 25,
+							top: 20
 						},
 						series: {
 							type: 'sunburst',
@@ -410,7 +414,9 @@
 						text: '24小时活跃人数统计',
 						textStyle: {
 							color: '#fff'
-						}
+						},
+						right: 25,
+						top: 20
 					},
 					toip: {
 						// 触发类型，默认（'item'）数据触发，可选为：'item' | 'axis'
@@ -504,4 +510,5 @@
 </script>
 
 <style scoped>
+
 </style>
