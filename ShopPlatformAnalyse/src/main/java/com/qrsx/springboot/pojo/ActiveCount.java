@@ -2,7 +2,10 @@ package com.qrsx.springboot.pojo;
 
 import java.sql.Timestamp;
 
-//活跃人群统计表
+/**
+ * @ClassName:  ActiveCount   
+ * @Description:活跃人群统计表
+ */
 public class ActiveCount {
 	//活跃人群统计表id
 	private Integer active_count_id;

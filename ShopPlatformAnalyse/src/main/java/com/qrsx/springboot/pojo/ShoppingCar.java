@@ -1,12 +1,10 @@
 package com.qrsx.springboot.pojo;
 
 /**
- * 
- * @ClassName:  ShoppingCar   
- * @Description:购物车表的pojo类   
+ * @ClassName:  ShoppingCar  
+ * @Description:购物车表 
  * @author: 姜振楠
- * @date:   2019年12月11日 下午4:26:10   
- *     
+ * @date:   2019年12月11日 下午4:26:10  
  */
 public class ShoppingCar {
 	//购物车id

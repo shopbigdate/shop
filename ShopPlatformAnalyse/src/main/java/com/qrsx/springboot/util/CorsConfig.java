@@ -5,18 +5,14 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
- * 
  * @ClassName: CorsConfig
- * @Description: TODO(跨域配置)
- * @author zsd
+ * @Description: 跨域配置类
  * @date 2019年12月11日
- *
  */
 @Configuration
 public class CorsConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
-		registry.addMapping("/**").allowedOrigins("*").allowedMethods("*")
-				.allowCredentials(true).maxAge(3600);
+		registry.addMapping("/**").allowedOrigins("*").allowedMethods("*").allowCredentials(true).maxAge(3600);
 	}
 }

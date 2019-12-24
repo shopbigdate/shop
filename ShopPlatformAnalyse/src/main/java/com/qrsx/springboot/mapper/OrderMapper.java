@@ -1,12 +1,3 @@
-/**  
-* <p>Title: OrderInfoMapper.java</p>  
-* <p>Description: </p>  
-* <p>Copyright: Copyright (c) 2017</p>  
-* <p>Company: www.qst.com</p>  
-* @author llx  
-* @date 2019年12月10日  
-* @version 1.0  
-*/
 package com.qrsx.springboot.mapper;
 
 import java.util.List;
@@ -17,12 +8,12 @@ import com.qrsx.springboot.pojo.GoodsInfo;
 import com.qrsx.springboot.pojo.OrderDetail;
 import com.qrsx.springboot.pojo.OrderInfo;
 
-/**  
-* <p>Title: OrderInfoMapper</p>  
-* <p>Description:订单Dao层 </p>  
-* @author llx  
-* @date 2019年12月10日  
-*/
+/**
+ * @ClassName:  OrderMapper   
+ * @Description:订单页面dao层实现
+ * @author llx  
+ * @date 2019年12月10日   
+ */
 @Mapper
 public interface OrderMapper {
 	//插入到订单信息表

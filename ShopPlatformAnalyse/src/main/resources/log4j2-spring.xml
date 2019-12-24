@@ -18,7 +18,7 @@
 		<!--flume中XX.conf配置文件的type也要改为avro，其他的接收不到 -->
 		<Flume name="flume" compress="false" type="Avro">
 			<Agent host="virhost01" port="44444" />
-			<PatternLayout pattern="%m" />
+			<PatternLayout pattern="%m%n" />
 		</Flume>
 
 		<!--输出到Kafka -->
@@ -39,7 +39,7 @@
 		<root level="warn">
 			<appender-ref ref="Console" />
 			<!-- <appender-ref ref="flume" /> -->
-			<appender-ref ref="KAFKA"/>
+			<!-- <appender-ref ref="KAFKA"/> -->
 		</root>
 	</loggers>
 

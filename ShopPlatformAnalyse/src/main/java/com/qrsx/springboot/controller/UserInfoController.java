@@ -16,11 +16,10 @@ import com.qrsx.springboot.service.UserInfoService;
 import com.qrsx.springboot.util.Md5Util;
 
 /**
- * 
  * @ClassName: UserInfoController
+ * @Description:用户信息controller层实现
  * @author zsd
  * @date 2019年12月11日
- *
  */
 @RestController
 @RequestMapping("user")
@@ -53,19 +52,12 @@ public class UserInfoController {
 
 	//退出登录，修改登录状态为0。
 	@RequestMapping("logout")
-	public void loginout(HttpSession session,Integer userId) {
+	public void loginout(HttpSession session, Integer userId) {
 		userInfoService.logOut(userId);
 		session.setAttribute("UserInfo", null);
 	}
 
-	/**
-	    * @Description 注册方法，添加数据到数据库
-	    * @Author  Yuyang Lu
-	    * @Date   2019/12/12 0012 下午 7:26
-	    * @Param
-	    * @Return int 添加成功后返回1,，否则返回0
-	    * @Exception  try catch捕捉加密异常
-	    */
+	//注册方法，添加数据到数据库，添加成功后返回1，否则返回0
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public Integer register(@RequestBody UserInfo userInfo) {
 		try {
@@ -78,14 +70,7 @@ public class UserInfoController {
 		return userInfoService.insertUser(userInfo);
 	}
 
-	/**
-	* @Description 查找用户名，查看用户名在数据库中是否存在
-	* @Author  Yuyang Lu
-	* @Date   2019/12/12 0012 下午 7:28
-	* @Param
-	* @Return  boolean：true && false
-	* @Exception
-	*/
+	//查找用户名，查看用户名在数据库中是否存在
 	@RequestMapping(value = "/select", method = RequestMethod.POST)
 	public boolean selectUserName(@RequestBody UserInfo userInfo) {
 		String result = userInfoService.selectUser(userInfo.getUserName());

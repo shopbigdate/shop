@@ -1,22 +1,13 @@
-/**  
-* <p>Title: OrderList.java</p>  
-* <p>Description: </p>  
-* <p>Copyright: Copyright (c) 2017</p>  
-* <p>Company: www.qst.com</p>  
-* @author llx  
-* @date 2019年12月10日  
-* @version 1.0  
-*/
 package com.qrsx.springboot.pojo;
 
 import java.util.List;
 
-/**  
-* <p>Title: OrderList</p>  
-* <p>Description: 用来接收前端传来的json数据的一个pojo类，未和数据库对应</p>  
-* @author llx  
-* @date 2019年12月10日  
-*/
+/**
+ * @ClassName:  OrderList   
+ * @Description:用来接收前端传来的json数据的一个pojo类，未和数据库对应
+ * @author llx  
+ * @date 2019年12月10日  
+ */
 public class OrderList {
 	//订单详情
 	private List<OrderDetail> orderDetail;
@@ -28,7 +19,6 @@ public class OrderList {
 	private String consignee_name;
 	//订单状态
 	private String order_status;
-	//   1
 	//用户手机
 	private String user_phone;
 	//收货地址

@@ -7,11 +7,9 @@ import com.qrsx.springboot.pojo.OrderCount;
 import com.qrsx.springboot.pojo.Sunburst;
 
 /**
- * 
- * @ClassName: Echarts_line_chart_Service
- * @author zsd
- * @date 2019年12月20日
- *
+ * @ClassName:  EchartsService   
+ * @Description:最终图表业务层实现
+ * @date 2019年12月20日   
  */
 public interface EchartsService {
 

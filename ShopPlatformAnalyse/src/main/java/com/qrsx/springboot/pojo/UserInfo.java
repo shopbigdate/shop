@@ -1,12 +1,10 @@
 package com.qrsx.springboot.pojo;
 
 /**
- * 
- * @ClassName: UserInfo
- * @Description: TODO(user_info表对应的实体类)
+ * @ClassName:  UserInfo   
+ * @Description:用户信息表
  * @author zsd
- * @date 2019年12月11日
- *
+ * @date 2019年12月11日 
  */
 public class UserInfo {
 	//用户编号

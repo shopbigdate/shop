@@ -2,18 +2,18 @@ package com.qrsx.springboot.pojo;
 
 import java.util.List;
 
-/**   
+/**
  * @ClassName:  Sunburst   
- * @Description:TODO(这里用一句话描述这个类的作用)   
+ * @Description:echarts旭日图信息
  * @author: 姜振楠
- * @date:   2019年12月20日 下午7:22:11   
- *     
- * @Copyright: 2019 www.tydic.com Inc. All rights reserved. 
- * 注意：本内容仅限于自己传阅，禁止外泄以及用于其他的商业目 
+ * @date:   2019年12月20日 下午7:22:11
  */
 public class Sunburst {
+	//商品种类
 	private String name;
+	//此种类的总销量
 	private Integer value;
+	//此种类的Top3
 	private List<SunburstChild> children;
 
 	public String getName() {

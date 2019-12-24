@@ -17,11 +17,10 @@ import com.qrsx.springboot.service.EchartsService;
 import net.sf.json.JSONObject;
 
 /**
- * 
  * @ClassName: EchartsController
+ * @Description:最终图表controller层实现
  * @author zsd
  * @date 2019年12月20日
- *
  */
 @RestController
 @RequestMapping("echarts")

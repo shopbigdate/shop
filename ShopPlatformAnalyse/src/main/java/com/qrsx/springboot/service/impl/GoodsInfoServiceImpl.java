@@ -13,11 +13,9 @@ import com.qrsx.springboot.pojo.ShoppingCar;
 import com.qrsx.springboot.service.GoodsInfoService;
 
 /**
- * 
  * @ClassName:  GoodsInfoImpl   
  * @Description:商品详情业务层实现
  * @date:   2019年12月11日 下午4:44:41   
- *     
  */
 @Service
 public class GoodsInfoServiceImpl implements GoodsInfoService {
@@ -25,42 +23,19 @@ public class GoodsInfoServiceImpl implements GoodsInfoService {
 	@Autowired
 	GoodsInfoMapper goodsInfoMapper;
 
-	/**
-	 * 
-	 * <p>Title: getOneGoodsInfo</p>   
-	 * <p>Description: 获取商品详情  </p>
-	 * @param goods_id
-	 * @return   
-	 * @see com.qrsx.springboot.service.GoodsInfoService#getOneGoodsInfo(java.lang.Integer)
-	 */
+	//获取商品详情
 	@Override
 	public GoodsInfo getOneGoodsInfo(Integer goods_id) {
 		return goodsInfoMapper.getOneGoodsInfo(goods_id);
 	}
 
-	/**
-	 * 
-	 * <p>Title: getOneGoodsPicture</p>   
-	 * <p>Description: 获取商品详情的图片信息</p>   
-	 * @param goods_id
-	 * @return   
-	 * @see com.qrsx.springboot.service.GoodsInfoService#getOneGoodsPicture(java.lang.Integer)
-	 */
+	//获取商品详情的图片信息
 	@Override
 	public List<GoodsPicture> getOneGoodsPicture(Integer goods_id) {
 		return goodsInfoMapper.getOneGoodsPicture(goods_id);
 	}
 
-	/**
-	 * 
-	 * <p>Title: createShoppingCar</p>   
-	 * <p>Description: 创建购物车表</p>   
-	 * @param goods_id
-	 * @param goods_number
-	 * @param user_id
-	 * @return   
-	 * @see com.qrsx.springboot.service.GoodsInfoService#createShoppingCar(java.lang.Integer, java.lang.Integer, java.lang.Integer)
-	 */
+	//创建购物车表
 	@Override
 	public Integer createShoppingCar(ShoppingCar shoppingcar) {
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
@@ -71,12 +46,13 @@ public class GoodsInfoServiceImpl implements GoodsInfoService {
 		return map.get("result");
 	}
 
+	//主页搜索vague
 	@Override
 	public List<GoodsInfo> vague(String goods_name) {
-		//主页搜索vague
 		return goodsInfoMapper.vague(goods_name);
 	}
 
+	//全部查找
 	@Override
 	public List<GoodsInfo> search() {
 		return goodsInfoMapper.search();

@@ -1,5 +1,10 @@
 package com.qrsx.springboot.pojo;
 
+/**
+ * @ClassName:  OrderCount   
+ * @Description:订单统计表
+ * @date:   2019年12月11日 下午4:24:37  
+ */
 public class OrderCount {
 	//自增id
 	private Integer order_count_id;

@@ -1,22 +1,13 @@
-/**  
-* <p>Title: OrderInfo.java</p>  
-* <p>Description: </p>  
-* <p>Copyright: Copyright (c) 2017</p>  
-* <p>Company: www.qst.com</p>  
-* @author llx  
-* @date 2019年12月9日  
-* @version 1.0  
-*/
 package com.qrsx.springboot.pojo;
 
 import java.sql.Timestamp;
 
-/**  
-* <p>Title: OrderInfo</p>  
-* <p>Description:订单信息表 ，和数据库对应</p>  
-* @author llx  
-* @date 2019年12月9日  
-*/
+/**
+ * @ClassName:  OrderInfo   
+ * @Description:订单信息表
+ * @author llx  
+ * @date 2019年12月9日  
+ */
 public class OrderInfo {
 	//订单编号
 	private String order_id;
@@ -103,13 +94,6 @@ public class OrderInfo {
 
 	public void setUpdate_time(Timestamp update_time) {
 		this.update_time = update_time;
-	}
-
-	@Override
-	public String toString() {
-		return "OrderInfo [order_id=" + order_id + ", user_id=" + user_id + ", consignee_name=" + consignee_name
-				+ ", order_sum=" + order_sum + ", order_status=" + order_status + ", create_time=" + create_time
-				+ ", update_time=" + update_time + "]";
 	}
 
 }

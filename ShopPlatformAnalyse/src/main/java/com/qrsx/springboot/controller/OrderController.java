@@ -23,6 +23,11 @@ import com.qrsx.springboot.service.GoodsInfoService;
 import com.qrsx.springboot.service.OrderService;
 import com.qrsx.springboot.util.GetOrderId;
 
+/**
+ * @ClassName:  OrderController   
+ * @Description:订单页面controller层实现
+ * @date:   2019年12月11日 下午4:44:41   
+ */
 @RestController
 public class OrderController {
 	//自动连接到Service Bean
@@ -34,14 +39,10 @@ public class OrderController {
 
 	@Autowired
 	HttpServletRequest request;
-	
+
 	private static final Logger log = LoggerFactory.getLogger(OrderController.class);
 
-	/**
-	 * <p>Title: getOrderList</p>  
-	 * <p>Description: 接收购物车存到session中的orderList数据</p>  
-	 * @return
-	 */
+	//接收购物车存到session中的orderList数据
 	@RequestMapping(value = "/getOrders", method = RequestMethod.POST)
 	public OrderList getOrderList() {
 		HttpSession session = request.getSession();
@@ -49,11 +50,7 @@ public class OrderController {
 		return orderList;
 	}
 
-	/**
-	 * <p>Title: orderAdd</p>  
-	 * <p>Description: 接收下单后的orderlist数据</p>  
-	 * @param orderList
-	 */
+	//接收下单后的orderlist数据
 	@RequestMapping(value = "/orders", method = RequestMethod.POST)
 	public void orderAdd(@RequestBody OrderList orderList) {
 		//orderInfo
@@ -81,20 +78,18 @@ public class OrderController {
 			o.setGoods_number(orderList.getOrderDetail().get(i).getGoods_number());
 			Double goods_price = goodsInfoService.getOneGoodsInfo(o.getGoods_id()).getGoods_price();
 			o.setGoods_sum(goods_price * o.getGoods_number());
-			
-			GoodsInfo goodsinfo=orderService.selectgoods(orderList.getOrderDetail().get(i).getGoods_id());
-			log.warn("hot_goods,"+orderList.getOrderDetail().get(i).getGoods_id()+","+goodsinfo.getGoods_name()+","+goodsinfo.getGoods_category()+",1"+",0"+",0"+",0"+",0");
+
+			GoodsInfo goodsinfo = orderService.selectgoods(orderList.getOrderDetail().get(i).getGoods_id());
+			//统计热门商品
+			log.warn("hot_goods," + orderList.getOrderDetail().get(i).getGoods_id() + "," + goodsinfo.getGoods_name()
+					+ "," + goodsinfo.getGoods_category() + ",1" + ",0" + ",0000-00-00 00:00:00" + ",0" + ",0");
 			i++;
 		}
 		//使用事务管理，插入到订单信息表和订单详情表
 		orderService.addOrder(orderInfo, orderList.getOrderDetail());
 	}
 
-	/**
-	 * <p>Title: orderUpdate</p>  
-	 * <p>Description:在前端确认支付后，跳到这里进行修改orderInfo表的状态和时间 </p>  
-	 * @param orderList
-	 */
+	//在前端确认支付后，跳到这里进行修改orderInfo表的状态和时间
 	@RequestMapping(value = "/updateOrders", method = RequestMethod.POST)
 	public void orderUpdate(@RequestBody OrderList orderList) {
 		OrderInfo orderInfo = null;
@@ -104,7 +99,9 @@ public class OrderController {
 		String id = (String) request.getSession().getAttribute("orderId");
 		orderInfo = new OrderInfo(id, orderList.getUser_id(), orderList.getConsignee_name(), orderList.getOrder_sum(),
 				orderList.getOrder_status(), Timestamp.valueOf(sdf2.format(d)), Timestamp.valueOf(sdf2.format(d)));
-		log.warn("order,"+orderInfo.getOrder_id()+",0"+",0"+",0,"+orderInfo.getOrder_sum()+","+orderInfo.getOrder_status()+","+orderInfo.getUpdate_time()+","+orderInfo.getConsignee_name());
+		//统计订单信息
+		log.warn("order," + orderInfo.getOrder_id() + ",0" + ",0" + ",0," + orderInfo.getOrder_sum() + ","
+				+ orderInfo.getOrder_status() + "," + orderInfo.getUpdate_time() + "," + orderInfo.getConsignee_name());
 		//更新订单状态，点击立即下单，订单状态为1；点击确认支付，订单状态为2；点击取消支付，订单状态为3。
 		orderService.updateOrderInfo(orderInfo);
 	}

@@ -13,6 +13,7 @@ import com.qrsx.springboot.service.UserInfoService;
 /**
  * 
  * @ClassName: UserInfoServiceImpl
+ * @Description:用户信息业务层实现
  * @author zsd
  * @date 2019年12月11日
  *
@@ -49,11 +50,13 @@ public class UserInfoServiceImpl implements UserInfoService {
 		userInfoMapper.logOut(userId);
 	}
 
+	//添加用户信息
 	@Override
 	public Integer insertUser(UserInfo userInfo) {
 		return userInfoMapper.insertUser(userInfo);
 	}
 
+	//根据用户名查询用户是否存在
 	@Override
 	public String selectUser(String userName) {
 		return userInfoMapper.selectUser(userName);

@@ -1,20 +1,13 @@
-/**  
-* <p>Title: OrderDetail.java</p>  
-* <p>Description: </p>  
-* <p>Copyright: Copyright (c) 2017</p>  
-* <p>Company: www.qst.com</p>  
-* @author llx  
-* @date 2019年12月9日  
-* @version 1.0  
-*/
 package com.qrsx.springboot.pojo;
 
-/**  
-* <p>Title: OrderDetail</p>  
-* <p>Description:订单详情表的pojo类 </p>  
-* @author llx  
-* @date 2019年12月9日  
-*/
+/**
+ * 
+ * @ClassName:  OrderDetail   
+ * @Description:订单详情表
+ * @author llx  
+ * @date 2019年12月9日   
+ *     
+ */
 public class OrderDetail {
 	//订单编号
 	private String order_id;
@@ -68,7 +61,7 @@ public class OrderDetail {
 	public void setGoods_name(String goods_name) {
 		this.goods_name = goods_name;
 	}
-	
+
 	public Double getGoods_price() {
 		return goods_price;
 	}

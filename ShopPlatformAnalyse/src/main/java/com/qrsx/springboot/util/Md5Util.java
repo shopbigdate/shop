@@ -6,6 +6,11 @@ import java.security.NoSuchAlgorithmException;
 
 import sun.misc.BASE64Encoder;
 
+/**
+ * @ClassName:  EchartsServiceImpl   
+ * @Description:加密工具类
+ * @date:   2019年12月11日 下午4:44:41   
+ */
 public class Md5Util {
 
 	public static String encoderByMd5(String str) throws NoSuchAlgorithmException, UnsupportedEncodingException {
