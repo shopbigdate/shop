@@ -23,7 +23,7 @@
 
 		<!--输出到Kafka -->
 		<Kafka name="KAFKA" topic="test01">
-			<ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY" />
+			<ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY" />
 			<PatternLayout pattern="%m" />
 			<Property name="bootstrap.servers">virhost01:9092</Property>
 		</Kafka>
@@ -38,8 +38,8 @@
 		<!--这里设置的是全局的日志显示级别 -->
 		<root level="warn">
 			<appender-ref ref="Console" />
-			<!-- <appender-ref ref="flume" /> -->
-			<!-- <appender-ref ref="KAFKA"/> -->
+			<appender-ref ref="flume" />
+			<appender-ref ref="KAFKA"/>
 		</root>
 	</loggers>
 
